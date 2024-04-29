@@ -51,8 +51,8 @@
 - Sidebar (Home, Library -Including user's playlists-, ...)
 - Home Page (All Categories -Category Cards- , Recommented Songs -Track Cards- , Some Artists -Artists Cards-)
 - Search Results Page (Categories, Songs, Albums, Artists) Containing Searched Word (Can have Filteration)
-- Category Page (Songs inside this category -Song Cards-)
-- Album Page (Songs inside this album -Songs Cards-)
+- Category Page (Songs inside this category -Track Cards-)
+- Album Page (Songs inside this album -Track Cards-)
 - Playlists Page (Playlist Cards) -Including (Liked Tracks) which is created for each user-
 - Playlist Page (Songs Added to this playlist)
 - Artist Page (Albums and Songs related to him/her)
