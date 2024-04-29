@@ -66,7 +66,7 @@
 
 ---
 - TASKS TO BE DONE IN 2-3 DAYS 
-- NavBar (Routing, Pages Ceration) [Jimmy]
+- NavBar (Routing, Pages Creation) [Jimmy]
 - Profile, Rrgister, Login, [A.Rahman]
 - Cards (Track, Category, Playlist, Album, Artist) [Amgad] [ghabour]
 - HomePage [El-Gamal]
