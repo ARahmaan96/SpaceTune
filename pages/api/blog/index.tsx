@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import blogs from "@/db/blog.json";
+// import blogs from "@/db/blog.json";
 import { getSession } from "next-auth/react";
 
 export default async function handler(
@@ -13,5 +13,5 @@ export default async function handler(
   }
 
   // User is authenticated, so return the data
-  res.status(200).json(blogs);
+  // res.status(200).json(blogs);
 }

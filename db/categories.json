@@ -1,0 +1,69 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Country",
+      "image": "country.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Pop",
+      "image": "pop.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Rock",
+      "image": "rock.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Classic",
+      "image": "classic.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Jazz",
+      "image": "jazz.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Hip Hop",
+      "image": "hiphop.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Heavy Metal",
+      "image": "heavymetal.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Funk",
+      "image": "funk.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Romantic",
+      "image": "romantic.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Popular",
+      "image": "popular.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Dance",
+      "image": "dance.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Quran",
+      "image": "quran.png"
+    },
+    {
+      "id": 13,
+      "name": "Stories",
+      "image": "stories.jpg"
+    }
+  ]
+}
