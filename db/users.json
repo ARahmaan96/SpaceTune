@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "age": 30,
+    "email": "john@example.com",
+    "password": "123",
+    "type": "admin"
+  },
+  {
+    "id": "2",
+    "name": "Jane Smith",
+    "age": 25,
+    "email": "jane@example.com",
+    "password": "123",
+    "type": "user"
+  },
+  {
+    "id": "3",
+    "name": "Michael Clark",
+    "age": 40,
+    "email": "michael@example.com",
+    "password": "123",
+    "type": "user"
+  },
+  {
+    "id": "4",
+    "name": "Emily Brown",
+    "age": 35,
+    "email": "emily@example.com",
+    "password": "123",
+    "type": "admin"
+  },
+  {
+    "id": "5",
+    "name": "Sophia Lee",
+    "age": 28,
+    "email": "sophia@example.com",
+    "password": "123",
+    "type": "user"
+  }
+]
