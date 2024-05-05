@@ -10,14 +10,9 @@ import {
 interface CategoryCardProps {
   title: string;
   imageUrl: string;
-  categoryUrl: string;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({
-  title,
-  imageUrl,
-  categoryUrl,
-}) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ title, imageUrl }) => {
   const handleClick = () => {};
 
   return (
@@ -26,12 +21,16 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
         width: 350,
         position: "relative",
         overflow: "hidden",
-        m: 2,
         borderRadius: "20px",
       }}
     >
       <CardActionArea onClick={handleClick}>
-        <CardMedia component="img" height={200} image={imageUrl} alt={title} />
+        <CardMedia
+          component="img"
+          height={200}
+          image={"/" + imageUrl}
+          alt={title}
+        />
         <CardContent
           style={{
             position: "absolute",
