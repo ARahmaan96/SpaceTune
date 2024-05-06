@@ -152,16 +152,19 @@ const HomePage: React.FC = () => {
         onMouseDown={handleCategoriesMouseDown}
       >
         {categories.map((category) => (
-          <div key={category.id} style={{ width: "300px", margin: "20px" }}>
-            <div
-              style={{ pointerEvents: isDraggingCategories ? "none" : "auto" }}
-            >
-              <CategoryCard
-                name={category.name}
-                image={category.image}
-                id={category.id}
-              />
-            </div>
+          <div
+            key={category.id}
+            style={{
+              width: "300px",
+              margin: "20px 40px 20px 0px",
+              pointerEvents: isDraggingCategories ? "none" : "auto",
+            }}
+          >
+            <CategoryCard
+              name={category.name}
+              image={category.image}
+              id={category.id}
+            />
           </div>
         ))}
       </div>
