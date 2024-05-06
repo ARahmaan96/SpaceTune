@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import Link from "next/link";
 
-export default function BlogPost({ blogPost }: { blogPost: BlogType }) {
+export default function BlogPost({ blogPost }: { blogPost: any }) {
   return (
     <Link href={`/blog/${blogPost.id}`} style={{ textDecoration: "none" }}>
       <Card sx={{ maxWidth: 310, height: 420 }} elevation={10}>

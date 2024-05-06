@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Slider, Tooltip, Typography } from '@mui/material';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseIcon from '@mui/icons-material/Pause';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import VolumeDownIcon from '@mui/icons-material/VolumeDown';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import FastRewindIcon from '@mui/icons-material/FastRewind';
-import FastForwardIcon from '@mui/icons-material/FastForward';
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Slider,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+import SkipNextIcon from "@mui/icons-material/SkipNext";
+import VolumeDownIcon from "@mui/icons-material/VolumeDown";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import FastRewindIcon from "@mui/icons-material/FastRewind";
+import FastForwardIcon from "@mui/icons-material/FastForward";
 
 const MusicBar = () => {
   const [volume, setVolume] = useState(50);
   const [muted, setMuted] = useState(false);
-  const [currentTime, setCurrentTime] = useState('0:00');
-  const [totalTime, setTotalTime] = useState('0:00');
-  const [musicName, setMusicName] = useState('Unknown Music');
+  const [currentTime, setCurrentTime] = useState("0:00");
+  const [totalTime, setTotalTime] = useState("0:00");
+  const [musicName, setMusicName] = useState("Unknown Music");
 
-  const handleVolumeChange = (event: any, newValue: React.SetStateAction<number>) => {
+  const handleVolumeChange = (
+    event: any,
+    newValue: React.SetStateAction<number>
+  ) => {
     setVolume(newValue);
     if (newValue === 0) {
       setMuted(true);
@@ -52,52 +62,85 @@ const MusicBar = () => {
   };
 
   return (
-    <AppBar position="fixed" style={{ top: 'auto', bottom: 0, backgroundColor: '#2e1c6d' }}>
-      <Toolbar className="theme" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <IconButton style={{ color: '#ffffff' }} onClick={handlePreviousSong}>
+    <AppBar
+      position="fixed"
+      style={{ top: "auto", bottom: 0, backgroundColor: "#2e1c6d" }}
+    >
+      <Toolbar
+        className="theme"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <IconButton style={{ color: "#ffffff" }} onClick={handlePreviousSong}>
             <SkipPreviousIcon />
           </IconButton>
-          <IconButton style={{ color: '#ffffff' }} onClick={handleFastRewind}>
+          <IconButton style={{ color: "#ffffff" }} onClick={handleFastRewind}>
             <FastRewindIcon />
           </IconButton>
-          <IconButton style={{ color: '#ffffff' }}>
+          <IconButton style={{ color: "#ffffff" }}>
             {true ? <PlayArrowIcon /> : <PauseIcon />}
           </IconButton>
-          <IconButton style={{ color: '#ffffff' }} onClick={handleFastForward}>
+          <IconButton style={{ color: "#ffffff" }} onClick={handleFastForward}>
             <FastForwardIcon />
           </IconButton>
-          <IconButton style={{ color: '#ffffff' }} onClick={handleNextSong}>
+          <IconButton style={{ color: "#ffffff" }} onClick={handleNextSong}>
             <SkipNextIcon />
           </IconButton>
-          <Typography variant="body2" style={{ color: '#ffffff', marginLeft: '16px', marginRight: "40px" }}>
+          <Typography
+            variant="body2"
+            style={{
+              color: "#ffffff",
+              marginLeft: "16px",
+              marginRight: "40px",
+            }}
+          >
             {musicName}
           </Typography>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="body2" style={{ color: '#ffffff', marginRight: '16px' }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Typography
+            variant="body2"
+            style={{ color: "#ffffff", marginRight: "16px" }}
+          >
             {currentTime} / {totalTime}
           </Typography>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Tooltip title={muted ? 'Unmute' : 'Mute'}>
-              <IconButton style={{ color: '#ffffff' }} onClick={handleMuteToggle}>
-                {muted ? <VolumeOffIcon /> : volume > 50 ? <VolumeUpIcon /> : <VolumeDownIcon />}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Tooltip title={muted ? "Unmute" : "Mute"}>
+              <IconButton
+                style={{ color: "#ffffff" }}
+                onClick={handleMuteToggle}
+              >
+                {muted ? (
+                  <VolumeOffIcon />
+                ) : volume > 50 ? (
+                  <VolumeUpIcon />
+                ) : (
+                  <VolumeDownIcon />
+                )}
               </IconButton>
             </Tooltip>
             <Slider
               value={volume}
-              onChange={handleVolumeChange}
+              // onChange={handleVolumeChange}
               aria-labelledby="continuous-slider"
               orientation="horizontal"
               min={0}
               max={100}
-              style={{ marginLeft: '8px', width: '100px', visibility: muted ? 'hidden' : 'visible' }}
+              style={{
+                marginLeft: "8px",
+                width: "100px",
+                visibility: muted ? "hidden" : "visible",
+              }}
             />
           </div>
         </div>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default MusicBar;
