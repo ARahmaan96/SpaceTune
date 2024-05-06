@@ -1,14 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Container, Typography, Avatar, Paper, Grid } from "@mui/material";
-import CategoryCard, {
-  CategoryCardProps,
-} from "@/components/musicCards/CategoryCard";
+import CategoryCard, { CategoryCardProps } from "@/components/musicCards/categoryCard";
 import Image from "next/image";
 import TrackCard, { TrackCardProps } from "@/components/musicCards/TrackCard";
+import ArtistCard, { ArtistCardProps } from "@/components/musicCards/ArtistCard";
 import axios from "axios";
 
 const HomePage: React.FC = () => {
-  const artists = Array.from({ length: 20 }, (_, i) => i + 1);
+  //const artists = Array.from({ length: 20 }, (_, i) => i + 1);
 
   const categoriesRef = useRef<HTMLDivElement>(null);
   const artistsRef = useRef<HTMLDivElement>(null);
@@ -81,6 +80,7 @@ const HomePage: React.FC = () => {
 
   const [categories, setCategories] = useState<CategoryCardProps[]>([]);
   const [tracks, setTracks] = useState<TrackCardProps[]>([]);
+  const [artists, setArtists] = useState<ArtistCardProps[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -103,8 +103,19 @@ const HomePage: React.FC = () => {
       }
     };
 
+    const fetchArtists = async () => {
+      try {
+        const response = await axios.get("/api/artists");
+
+        setArtists(response.data);
+      } catch (error) {
+        console.error("Error fetching artists:", error);
+      }
+    };
+
     fetchCategories();
     fetchTracks();
+    fetchArtists();
   }, []);
 
   return (
@@ -162,18 +173,23 @@ const HomePage: React.FC = () => {
         }}
         onMouseDown={handleArtistsMouseDown}
       >
-        {artists.map((artist, index) => (
-          <div
-            key={index}
-            style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
-          >
-            <Avatar
-              alt={`Artist ${artist}`}
-              src={`1.jpg`}
-              sx={{ width: 150, height: 150 }}
-            />
-          </div>
-        ))}
+        {artists.map((artist) => (
+        <div
+          key={artist.id}
+          style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
+        >
+          <ArtistCard
+            id={artist.id}
+            artist_name={artist.artist_name}
+            nationality={artist.nationality}
+            language={artist.language}
+            image_url={artist.image_url}
+            age={artist.age}
+            no_of_albums={artist.no_of_albums}
+            no_of_songs={artist.no_of_songs}
+          />
+        </div>
+      ))}
       </div>
 
       {/* Songs section */}
