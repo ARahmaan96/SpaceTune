@@ -13,10 +13,10 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Hidden from "@mui/material/Hidden";
-import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
-import { Box, colors } from "@mui/material";
-import { LibraryMusicSharp } from "@mui/icons-material";
+import { Box } from "@mui/material";
+import CategoryIcon from "@mui/icons-material/Category";
+import Person4Icon from "@mui/icons-material/Person4";
 
 function Sidebar() {
   const pages = [
@@ -24,8 +24,9 @@ function Sidebar() {
     {
       name: "Categories",
       path: "/home/categories",
-      icon: <LibraryMusicSharp />,
+      icon: <CategoryIcon />,
     },
+    { name: "Artists", path: "/home/artists", icon: <Person4Icon /> },
     { name: "About", path: "/about", icon: <InfoIcon /> },
     { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
     { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
