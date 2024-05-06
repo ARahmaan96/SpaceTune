@@ -1,50 +1,60 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
 export interface ArtistCardProps {
-    id: number;
-    artist_name: string;
-    nationality: string;
-    language: string;
-    image_url: string;
-    age: number;
-    no_of_albums: number;
-    no_of_songs: number;
+  id: number;
+  artist_name: string;
+  nationality: string;
+  language: string;
+  image_url: string;
+  age: number;
+  no_of_albums: number;
+  no_of_songs: number;
 }
 
-const ArtistCard: React.FC<ArtistCardProps> = ({ id, artist_name, nationality, language, image_url, age, no_of_albums, no_of_songs}) => {
+const ArtistCard: React.FC<ArtistCardProps> = ({
+  id,
+  artist_name,
+  nationality,
+  language,
+  image_url,
+  age,
+  no_of_albums,
+  no_of_songs,
+}) => {
   const handleClick = () => {
     // Handle click event for the artist card
   };
 
   const imageStyle = {
-    width: '140px',
-    height: '140px',
-    borderRadius: '50%',
-    margin: '0 auto',
-    overflow: 'hidden',
+    width: "100px",
+    height: "100px",
+    borderRadius: "50%",
+    margin: "10px auto",
+    overflow: "hidden",
   };
 
   const nameStyle = {
-    textAlign: 'center' as 'center',
-    marginTop: '10px',
+    textAlign: "center" as "center",
+    fontSize: "1.5rem",
+    overflow: "hidden",
   };
 
   return (
     <Card
       sx={{
-        width: 350,
-        position: 'relative',
-        overflow: 'hidden',
-        borderRadius: '20px',
-        backgroundColor: 'transparent',
-        boxShadow: 'none',
+        width: "200px",
+        position: "relative",
+        overflow: "hidden",
+        borderRadius: "20px",
+        boxShadow: "none",
+        backgroundColor: "rgba(120, 100, 200, 0.4)",
       }}
     >
       <CardActionArea onClick={handleClick}>
@@ -61,10 +71,9 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ id, artist_name, nationality, l
             variant="h5"
             component="div"
             sx={{
-              color: '#FF6500',
-              fontWeight: 'bold',
-              fontFamily: 'sans-serif',
-              fontSize: '1.7rem',
+              color: "#FF6500",
+              fontFamily: "sans-serif",
+              fontSize: "1.3rem",
             }}
             className="concert-one-regular"
             style={nameStyle}
