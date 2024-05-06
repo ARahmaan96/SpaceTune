@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Grid, Typography } from "@mui/material";
-import CategoryCard from "@/components/musicCards/CategoryCard";
-import { useRouter } from "next/router";
-import TrackCard from "@/components/musicCards/TrackCard";
+import ArtistCard, { ArtistCardProps } from "@/components/musicCards/ArtistCard";
 
 const CategoriesPage = () => {
-  const [categories, setCategories] = useState([]);
+  const [artists, setArtists] = useState<ArtistCardProps[]>([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchArtists = async () => {
       try {
-        const response = await axios.get("/api/home/categories");
+        const response = await axios.get("/api/artists");
 
-        setCategories(response.data);
+        setArtists(response.data);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error("Error fetching artists:", error);
       }
     };
 
-    fetchCategories();
+    fetchArtists();
   }, []);
 
   return (
@@ -32,19 +30,24 @@ const CategoriesPage = () => {
         spacing={3}
         sx={{ display: "flex", justifyContent: "center" }}
       >
-        {categories.map((category: any) => (
+        {artists.map((artist: any) => (
           <Grid
             item
             xs={12}
             sm={6}
-            md={4}
-            key={category.id}
+            md={3}
+            key={artist.id}
             sx={{ display: "flex" }}
           >
-            <CategoryCard
-              name={category.name}
-              image={category.image}
-              id={category.id}
+            <ArtistCard
+              id={artist.id}
+              artist_name={artist.artist_name}
+              nationality={artist.nationality}
+              language={artist.language}
+              image_url={artist.image_url}
+              age={artist.age}
+              no_of_albums={artist.no_of_albums}
+              no_of_songs={artist.no_of_songs}
             />
           </Grid>
         ))}
