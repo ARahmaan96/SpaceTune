@@ -200,11 +200,17 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Songs section */}
-      <div style={{ display: "flex", flexWrap: "wrap", margin: "auto" }}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          margin: "auto",
+        }}
+      >
         {tracks.map((track) => (
           <div
             key={track.id}
-            style={{ flex: "0 0 50%", maxWidth: "50%", marginBottom: "15px" }}
+            style={{ flex: "wrap", margin: "10px 20px 0px 0px" }}
           >
             <TrackCard
               id={track.id}

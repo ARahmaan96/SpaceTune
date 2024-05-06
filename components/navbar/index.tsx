@@ -17,6 +17,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import { Box } from "@mui/material";
 import CategoryIcon from "@mui/icons-material/Category";
 import Person4Icon from "@mui/icons-material/Person4";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 function Sidebar() {
   const pages = [
@@ -30,6 +31,9 @@ function Sidebar() {
     { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
     { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
     { name: "About", path: "/about", icon: <InfoIcon /> },
+  ];
+  const adminPages = [
+    { name: "Add Track", path: "/add_track", icon: <AddCircleIcon /> },
   ];
   const bottomPages = [
     { name: "Login", path: "/auth/login", icon: <LoginIcon /> },
@@ -100,6 +104,23 @@ function Sidebar() {
           </List>
           <Divider />
           <List>
+            {adminPages.map((page) => (
+              <Link key={page.name} href={page.path} passHref>
+                <ListItem button onClick={handlePageClick}>
+                  <ListItemIcon sx={{ color: "orange" }}>
+                    {page.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography color="lightblue">{page.name}</Typography>
+                    }
+                  />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+          <Divider />
+          <List>
             {bottomPages.map((page) => (
               <Link key={page.name} href={page.path} passHref>
                 <ListItem button onClick={handlePageClick}>
@@ -148,6 +169,23 @@ function Sidebar() {
                   </ListItemIcon>
                   <ListItemText
                     primary={<Typography color="white">{page.name}</Typography>}
+                  />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {adminPages.map((page) => (
+              <Link key={page.name} href={page.path} passHref>
+                <ListItem button onClick={handlePageClick}>
+                  <ListItemIcon sx={{ color: "orange" }}>
+                    {page.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography color="lightblue">{page.name}</Typography>
+                    }
                   />
                 </ListItem>
               </Link>
