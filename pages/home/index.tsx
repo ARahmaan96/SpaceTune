@@ -1,9 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Container, Typography, Avatar, Paper, Grid } from "@mui/material";
-import CategoryCard, { CategoryCardProps } from "@/components/musicCards/categoryCard";
+import CategoryCard, {
+  CategoryCardProps,
+} from "@/components/musicCards/CategoryCard";
 import Image from "next/image";
 import TrackCard, { TrackCardProps } from "@/components/musicCards/TrackCard";
-import ArtistCard, { ArtistCardProps } from "@/components/musicCards/ArtistCard";
+import ArtistCard, {
+  ArtistCardProps,
+} from "@/components/musicCards/ArtistCard";
 import axios from "axios";
 
 const HomePage: React.FC = () => {
@@ -174,22 +178,22 @@ const HomePage: React.FC = () => {
         onMouseDown={handleArtistsMouseDown}
       >
         {artists.map((artist) => (
-        <div
-          key={artist.id}
-          style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
-        >
-          <ArtistCard
-            id={artist.id}
-            artist_name={artist.artist_name}
-            nationality={artist.nationality}
-            language={artist.language}
-            image_url={artist.image_url}
-            age={artist.age}
-            no_of_albums={artist.no_of_albums}
-            no_of_songs={artist.no_of_songs}
-          />
-        </div>
-      ))}
+          <div
+            key={artist.id}
+            style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
+          >
+            <ArtistCard
+              id={artist.id}
+              artist_name={artist.artist_name}
+              nationality={artist.nationality}
+              language={artist.language}
+              image_url={artist.image_url}
+              age={artist.age}
+              no_of_albums={artist.no_of_albums}
+              no_of_songs={artist.no_of_songs}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Songs section */}
