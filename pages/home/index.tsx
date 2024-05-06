@@ -190,6 +190,7 @@ const HomePage: React.FC = () => {
               artist_image={track.artist_image}
               track_image={track.track_image}
               duration={track.duration}
+              handleClick={() => {}}
             />
           </div>
         ))}
