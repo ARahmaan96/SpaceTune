@@ -1,0 +1,116 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Country",
+      "image": "country.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Pop",
+      "image": "pop.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Rock",
+      "image": "rock.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Classic",
+      "image": "classic.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Jazz",
+      "image": "jazz.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Hip Hop",
+      "image": "hiphop.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Heavy Metal",
+      "image": "heavymetal.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Funk",
+      "image": "funk.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Romantic",
+      "image": "romantic.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Popular",
+      "image": "popular.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Dance",
+      "image": "dance.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Quran",
+      "image": "quran.png"
+    },
+    {
+      "id": 13,
+      "name": "Stories",
+      "image": "stories.jpg"
+    }
+  ],
+  "tracks": [
+    {
+      "id": 1,
+      "name": "Happy",
+      "track_image": "https://img.buzzfeed.com/buzzfeed-static/static/2022-12/7/22/tmp/2304493a33bf/tmp-name-3-683-1670453296-70_dblwide.jpg",
+      "artist_name": "John Smith",
+      "artist_image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/02/16/10/billie-eilish.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
+      "category_id": 1,
+      "duration": "02:30"
+    },
+    {
+      "id": 2,
+      "name": "Relaxing Vibes",
+      "track_image": "https://img.buzzfeed.com/buzzfeed-static/static/2022-12/7/22/tmp/2304493a33bf/tmp-name-3-683-1670453296-70_dblwide.jpg",
+      "artist_name": "Emma Johnson",
+      "artist_image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/02/16/10/billie-eilish.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
+      "category_id": 9,
+      "duration": "03:45"
+    },
+    {
+      "id": 3,
+      "name": "Rock n Roll",
+      "track_image": "https://img.buzzfeed.com/buzzfeed-static/static/2022-12/7/22/tmp/2304493a33bf/tmp-name-3-683-1670453296-70_dblwide.jpg",
+      "artist_name": "Michael Davis",
+      "artist_image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/02/16/10/billie-eilish.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
+      "category_id": 3,
+      "duration": "04:15"
+    },
+    {
+      "id": 4,
+      "name": "Jazz It Up",
+      "track_image": "https://img.buzzfeed.com/buzzfeed-static/static/2022-12/7/22/tmp/2304493a33bf/tmp-name-3-683-1670453296-70_dblwide.jpg",
+      "artist_name": "Sarah Brown",
+      "artist_image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/02/16/10/billie-eilish.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
+      "category_id": 5,
+      "duration": "03:00"
+    },
+    {
+      "id": 5,
+      "name": "Funky Groove",
+      "track_image": "https://img.buzzfeed.com/buzzfeed-static/static/2022-12/7/22/tmp/2304493a33bf/tmp-name-3-683-1670453296-70_dblwide.jpg",
+      "artist_name": "David Wilson",
+      "artist_image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/02/16/10/billie-eilish.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
+      "category_id": 8,
+      "duration": "02:55"
+    }
+  ]
+}
