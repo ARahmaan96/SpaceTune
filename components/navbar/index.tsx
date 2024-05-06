@@ -27,9 +27,9 @@ function Sidebar() {
       icon: <CategoryIcon />,
     },
     { name: "Artists", path: "/home/artists", icon: <Person4Icon /> },
-    { name: "About", path: "/about", icon: <InfoIcon /> },
-    { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
     { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
+    { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
+    { name: "About", path: "/about", icon: <InfoIcon /> },
   ];
   const bottomPages = [
     { name: "Login", path: "/auth/login", icon: <LoginIcon /> },
