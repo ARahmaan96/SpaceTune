@@ -16,141 +16,163 @@ import Hidden from "@mui/material/Hidden";
 import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
 import { Box, colors } from "@mui/material";
+import { LibraryMusicSharp } from "@mui/icons-material";
 
 function Sidebar() {
-    const pages = [
-        { name: "Home", path: "/", icon: <LibraryMusicIcon /> },
-        { name: "About", path: "/about", icon: <InfoIcon /> },
-        { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
-        { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
-    ];
-    const bottomPages = [
-        { name: "Login", path: "/auth/login", icon: <LoginIcon /> },
-        { name: "Register", path: "/auth/register", icon: <LoginIcon /> },
-    ];
+  const pages = [
+    { name: "Home", path: "/", icon: <LibraryMusicIcon /> },
+    {
+      name: "Categories",
+      path: "/home/categories",
+      icon: <LibraryMusicSharp />,
+    },
+    { name: "About", path: "/about", icon: <InfoIcon /> },
+    { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
+    { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
+  ];
+  const bottomPages = [
+    { name: "Login", path: "/auth/login", icon: <LoginIcon /> },
+    { name: "Register", path: "/auth/register", icon: <LoginIcon /> },
+  ];
 
-    const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false);
 
-    const toggleMobileSidebar = () => {
-        setIsMobileSidebarOpen(!isMobileSidebarOpen);
-    };
+  const toggleMobileSidebar = () => {
+    setIsMobileSidebarOpen(!isMobileSidebarOpen);
+  };
 
-    const handlePageClick = () => {
-        setIsMobileSidebarOpen(false); // Close the mobile sidebar when a page is clicked
-    };
+  const handlePageClick = () => {
+    setIsMobileSidebarOpen(false); // Close the mobile sidebar when a page is clicked
+  };
 
-    return (
-        <>
-            <Hidden mdUp>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={toggleMobileSidebar}
-                    sx={{ mr: 1, marginLeft: 0 }}
-                >
-                    <MenuIcon sx={{ color: "orange", fontSize: "2rem", position: "fixed", top: "10px", left: "10px" }} />
-                </IconButton>
-                <Drawer
-                    variant="temporary"
-                    open={isMobileSidebarOpen}
-                    onClose={toggleMobileSidebar}
-                    sx={{
-                        "& .MuiDrawer-paper": {
-                            width: "50vw",
-                            backgroundColor: "#4b0082", // Darker purple background color
-                        },
-                    }}
-                >
-                    <Box p={2} bgcolor="#4b0082" textAlign="center"> {/* Darker purple background color */}
-                        <Typography variant="h6" color="white">
-                            SpaceTune
-                        </Typography>
-                    </Box>
-                    <List>
-                        {pages.map((page) => (
-                            <Link key={page.name} href={page.path} passHref>
-                                <ListItem button onClick={handlePageClick}>
-                                    <ListItemIcon sx={{color: "lightsalmon"}}>
-                                        {page.icon}
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={<Typography color="white">{page.name}</Typography>}
-                                    />
-                                </ListItem>
-                            </Link>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {bottomPages.map((page) => (
-                            <Link key={page.name} href={page.path} passHref>
-                                <ListItem button onClick={handlePageClick}>
-                                    <ListItemIcon sx={{color: "orange"}}>
-                                        {page.icon}
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={<Typography color="lightblue">{page.name}</Typography>}
-                                    />
-                                </ListItem>
-                            </Link>
-                        ))}
-                    </List>
-                </Drawer>
-            </Hidden>
-            <Hidden smDown>
-                <Drawer
-                    variant="permanent"
-                    className="d-md-block"
-                    sx={{
-                        width: 240,
-                        flexShrink: 0,
-                        "& .MuiDrawer-paper": {
-                            width: 240,
-                            boxSizing: "border-box",
-                            bgcolor: "#4b0082", // Darker purple background color
-                        },
-                    }}
-                >
-                    <Box p={2} bgcolor="#4b0082"> {/* Darker purple background color */}
-                        <Typography variant="h6" color="white" align="center">
-                            SpaceTune
-                        </Typography>
-                        <Divider sx={{ mt: 2, mb: 2 }} />
-                    </Box>
-                    <List>
-                        {pages.map((page) => (
-                            <Link key={page.name} href={page.path} passHref>
-                                <ListItem button>
-                                    <ListItemIcon sx={{color: "lightsalmon"}}>
-                                        {page.icon}
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={<Typography color="white">{page.name}</Typography>}
-                                    />
-                                </ListItem>
-                            </Link>
-                        ))}
-                    </List>
-                    <Divider sx={{ mt: 2, mb: 2 }} />
-                    <List>
-                        {bottomPages.map((page) => (
-                            <Link key={page.name} href={page.path} passHref>
-                                <ListItem button>
-                                    <ListItemIcon sx={{color: "orange"}}>
-                                        {page.icon}
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={<Typography color="lightblue">{page.name}</Typography>}
-                                    />
-                                </ListItem>
-                            </Link>
-                        ))}
-                    </List>
-                </Drawer>
-            </Hidden>
-        </>
-    );
+  return (
+    <>
+      <Hidden mdUp>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={toggleMobileSidebar}
+          sx={{ mr: 1, marginLeft: 0 }}
+        >
+          <MenuIcon
+            sx={{
+              color: "orange",
+              fontSize: "2rem",
+              position: "fixed",
+              top: "10px",
+              left: "10px",
+            }}
+          />
+        </IconButton>
+        <Drawer
+          variant="temporary"
+          open={isMobileSidebarOpen}
+          onClose={toggleMobileSidebar}
+          sx={{
+            "& .MuiDrawer-paper": {
+              width: "50vw",
+              backgroundColor: "#4b0082", // Darker purple background color
+            },
+          }}
+        >
+          <Box p={2} bgcolor="#4b0082" textAlign="center">
+            {" "}
+            {/* Darker purple background color */}
+            <Typography variant="h6" color="white">
+              SpaceTune
+            </Typography>
+          </Box>
+          <List>
+            {pages.map((page) => (
+              <Link key={page.name} href={page.path} passHref>
+                <ListItem button onClick={handlePageClick}>
+                  <ListItemIcon sx={{ color: "lightsalmon" }}>
+                    {page.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={<Typography color="white">{page.name}</Typography>}
+                  />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {bottomPages.map((page) => (
+              <Link key={page.name} href={page.path} passHref>
+                <ListItem button onClick={handlePageClick}>
+                  <ListItemIcon sx={{ color: "orange" }}>
+                    {page.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography color="lightblue">{page.name}</Typography>
+                    }
+                  />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+        </Drawer>
+      </Hidden>
+      <Hidden smDown>
+        <Drawer
+          variant="permanent"
+          className="d-md-block"
+          sx={{
+            width: 240,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: 240,
+              boxSizing: "border-box",
+              bgcolor: "#4b0082", // Darker purple background color
+            },
+          }}
+        >
+          <Box p={2} bgcolor="#4b0082">
+            {" "}
+            {/* Darker purple background color */}
+            <Typography variant="h6" color="white" align="center">
+              SpaceTune
+            </Typography>
+            <Divider sx={{ mt: 2, mb: 2 }} />
+          </Box>
+          <List>
+            {pages.map((page) => (
+              <Link key={page.name} href={page.path} passHref>
+                <ListItem button>
+                  <ListItemIcon sx={{ color: "lightsalmon" }}>
+                    {page.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={<Typography color="white">{page.name}</Typography>}
+                  />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+          <Divider sx={{ mt: 2, mb: 2 }} />
+          <List>
+            {bottomPages.map((page) => (
+              <Link key={page.name} href={page.path} passHref>
+                <ListItem button>
+                  <ListItemIcon sx={{ color: "orange" }}>
+                    {page.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography color="lightblue">{page.name}</Typography>
+                    }
+                  />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+        </Drawer>
+      </Hidden>
+    </>
+  );
 }
 
 export default Sidebar;
