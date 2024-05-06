@@ -1,9 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Container, Typography, Avatar, Paper, Grid } from '@mui/material';
-import CategoryCard from '@/components/musicCards/categoryCard';
-import Image from 'next/image';
-import TrackCard from '@/components/musicCards/TrackCard';
-import axios from 'axios';
+import React, { useRef, useState, useEffect } from "react";
+import { Container, Typography, Avatar, Paper, Grid } from "@mui/material";
+import CategoryCard, {
+  CategoryCardProps,
+} from "@/components/musicCards/categoryCard";
+import Image from "next/image";
+import TrackCard, { TrackCardProps } from "@/components/musicCards/TrackCard";
+import axios from "axios";
 
 const HomePage: React.FC = () => {
   const artists = Array.from({ length: 20 }, (_, i) => i + 1);
@@ -39,33 +41,46 @@ const HomePage: React.FC = () => {
     };
 
     if (isDraggingCategories || isDraggingArtists) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
     } else {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isDraggingCategories, isDraggingArtists, dragStartXCategories, dragStartXArtists, scrollLeftCategories, scrollLeftArtists]);
+  }, [
+    isDraggingCategories,
+    isDraggingArtists,
+    dragStartXCategories,
+    dragStartXArtists,
+    scrollLeftCategories,
+    scrollLeftArtists,
+  ]);
 
-  const handleCategoriesMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleCategoriesMouseDown = (
+    event: React.MouseEvent<HTMLDivElement>
+  ) => {
     setIsDraggingCategories(true);
     setDragStartXCategories(event.clientX);
-    setScrollLeftCategories(categoriesRef.current ? categoriesRef.current.scrollLeft : 0);
+    setScrollLeftCategories(
+      categoriesRef.current ? categoriesRef.current.scrollLeft : 0
+    );
   };
 
   const handleArtistsMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     setIsDraggingArtists(true);
     setDragStartXArtists(event.clientX);
-    setScrollLeftArtists(artistsRef.current ? artistsRef.current.scrollLeft : 0);
+    setScrollLeftArtists(
+      artistsRef.current ? artistsRef.current.scrollLeft : 0
+    );
   };
 
-  const [categories, setCategories] = useState([]);
-  const [tracks, setTracks] = useState([]);
+  const [categories, setCategories] = useState<CategoryCardProps[]>([]);
+  const [tracks, setTracks] = useState<TrackCardProps[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -93,24 +108,44 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg" style={{ paddingTop: '24px' }}>
-      <Typography variant="h3" align="center" style={{ marginBottom: '16px', color: "lightblue" }}>
+    <Container maxWidth="lg" style={{ paddingTop: "24px" }}>
+      <Typography
+        variant="h3"
+        align="center"
+        style={{ marginBottom: "16px", color: "lightblue" }}
+      >
         Welcome to SpaceTune
       </Typography>
-      <Typography variant="body1" align="center" style={{ marginBottom: '24px', color: "white" }}>
-        Explore the universe of music with SpaceTune. Listen to your favorite tracks from various genres and artists.
+      <Typography
+        variant="body1"
+        align="center"
+        style={{ marginBottom: "24px", color: "white" }}
+      >
+        Explore the universe of music with SpaceTune. Listen to your favorite
+        tracks from various genres and artists.
       </Typography>
 
       {/* Categories section */}
       <div
         ref={categoriesRef}
-        style={{ display: 'flex', gap: '25px', marginBottom: '24px', overflowX: 'hidden' }}
+        style={{
+          display: "flex",
+          gap: "25px",
+          marginBottom: "24px",
+          overflowX: "hidden",
+        }}
         onMouseDown={handleCategoriesMouseDown}
       >
         {categories.map((category) => (
-          <div key={category.id} style={{ width: '300px', margin: '20px' }}>
-            <div style={{ pointerEvents: isDraggingCategories ? 'none' : 'auto' }}>
-            <CategoryCard title={category.name} imageUrl={category.image} />
+          <div key={category.id} style={{ width: "300px", margin: "20px" }}>
+            <div
+              style={{ pointerEvents: isDraggingCategories ? "none" : "auto" }}
+            >
+              <CategoryCard
+                name={category.name}
+                image={category.image}
+                id={category.id}
+              />
             </div>
           </div>
         ))}
@@ -119,11 +154,19 @@ const HomePage: React.FC = () => {
       {/* Artists section */}
       <div
         ref={artistsRef}
-        style={{ display: 'flex', gap: '16px', marginBottom: '24px', overflowX: 'hidden' }}
+        style={{
+          display: "flex",
+          gap: "16px",
+          marginBottom: "24px",
+          overflowX: "hidden",
+        }}
         onMouseDown={handleArtistsMouseDown}
       >
         {artists.map((artist, index) => (
-          <div key={index} style={{ pointerEvents: isDraggingArtists ? 'none' : 'auto' }}>
+          <div
+            key={index}
+            style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
+          >
             <Avatar
               alt={`Artist ${artist}`}
               src={`1.jpg`}
@@ -135,9 +178,13 @@ const HomePage: React.FC = () => {
 
       {/* Songs section */}
       <div style={{ display: "flex", flexWrap: "wrap", margin: "auto" }}>
-        {tracks.map((track: any) => (
-          <div key={track.id} style={{ flex: "0 0 50%", maxWidth: "50%", marginBottom: "15px" }}>
+        {tracks.map((track) => (
+          <div
+            key={track.id}
+            style={{ flex: "0 0 50%", maxWidth: "50%", marginBottom: "15px" }}
+          >
             <TrackCard
+              id={track.id}
               name={track.name}
               artist_name={track.artist_name}
               artist_image={track.artist_image}
@@ -149,6 +196,6 @@ const HomePage: React.FC = () => {
       </div>
     </Container>
   );
-}
+};
 
 export default HomePage;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Grid, Typography } from "@mui/material";
-import CategoryCard from "@/components/musicCards/CategoryCard";
+import CategoryCard from "@/components/musicCards/categoryCard";
 import { useRouter } from "next/router";
 import TrackCard from "@/components/musicCards/TrackCard";
 
@@ -43,6 +43,7 @@ const CategoriesPage = () => {
         {tracks.map((track: any) => (
           <Grid item xs={12} key={track.id}>
             <TrackCard
+              id={track.id}
               name={track.name}
               artist_name={track.artist_name}
               artist_image={track.artist_image}
@@ -70,7 +71,11 @@ const CategoriesPage = () => {
             key={category.id}
             sx={{ display: "flex" }}
           >
-            <CategoryCard title={category.name} imageUrl={category.image} />
+            <CategoryCard
+              name={category.name}
+              image={category.image}
+              id={category.id}
+            />
           </Grid>
         ))}
       </Grid>

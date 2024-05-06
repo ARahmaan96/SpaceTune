@@ -8,7 +8,8 @@ import {
   Avatar,
 } from "@mui/material";
 
-interface TrackCardProps {
+export interface TrackCardProps {
+  id: number;
   name: string;
   artist_name: string;
   track_image: string;

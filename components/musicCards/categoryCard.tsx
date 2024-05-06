@@ -7,12 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 
-interface CategoryCardProps {
-  title: string;
-  imageUrl: string;
+export interface CategoryCardProps {
+  id: number;
+  name: string;
+  image: string;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ title, imageUrl }) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ name, image }) => {
   const handleClick = () => {};
 
   return (
@@ -28,8 +29,8 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, imageUrl }) => {
         <CardMedia
           component="img"
           height={200}
-          image={"/" + imageUrl}
-          alt={title}
+          image={"/" + image}
+          alt={name}
         />
         <CardContent
           style={{
@@ -53,7 +54,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, imageUrl }) => {
             }}
             className="concert-one-regular"
           >
-            {title}
+            {name}
           </Typography>
         </CardContent>
       </CardActionArea>
