@@ -1,275 +1,156 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
-import LoginIcon from "@mui/icons-material/Login";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import InfoIcon from "@mui/icons-material/Info";
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Hidden from "@mui/material/Hidden";
+import Button from "@mui/material/Button";
+import LoginIcon from "@mui/icons-material/Login";
+import { Box, colors } from "@mui/material";
 
-const pages = [
-  { name: "About", path: "/about", auth: false },
-  { name: "Contact Us", path: "/contact", auth: false },
-];
-const settings = [
-  { name: "Profile", path: "/user/profile" },
-  { name: "Logout", path: "/auth/logout" },
-];
+function Sidebar() {
+    const pages = [
+        { name: "Home", path: "/", icon: <LibraryMusicIcon /> },
+        { name: "About", path: "/about", icon: <InfoIcon /> },
+        { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
+        { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
+    ];
+    const bottomPages = [
+        { name: "Login", path: "/auth/login", icon: <LoginIcon /> },
+        { name: "Register", path: "/auth/register", icon: <LoginIcon /> },
+    ];
 
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+    const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    const toggleMobileSidebar = () => {
+        setIsMobileSidebarOpen(!isMobileSidebarOpen);
+    };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-  const routher = useRouter();
-  const handleCloseUserMenu = (path: string) => {
-    setAnchorElUser(null);
-    routher.push(path);
-  };
-  const { data: session } = useSession();
-  return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <LibraryMusicIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="h6"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "#ddd",
-              }}
-            >
-              SpaceTune
-            </Typography>
-          </Link>
+    const handlePageClick = () => {
+        setIsMobileSidebarOpen(false); // Close the mobile sidebar when a page is clicked
+    };
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => {
-                if (page.auth) {
-                  if (session) {
-                    return (
-                      <MenuItem key={page.path} onClick={handleCloseNavMenu}>
-                        <Link
-                          href={page.path}
-                          style={{ color: "#333", textDecoration: "none" }}
-                        >
-                          <Typography textAlign="center">
-                            {page.name}
-                          </Typography>
-                        </Link>
-                      </MenuItem>
-                    );
-                  } else {
-                    return null;
-                  }
-                } else {
-                  return (
-                    <MenuItem key={page.path} onClick={handleCloseNavMenu}>
-                      <Link
-                        href={page.path}
-                        style={{ color: "#333", textDecoration: "none" }}
-                      >
-                        <Typography textAlign="center">{page.name}</Typography>
-                      </Link>
-                    </MenuItem>
-                  );
-                }
-              })}
-            </Menu>
-          </Box>
-          <LibraryMusicIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
-          <Link
-            href="/"
-            style={{
-              textDecoration: "none",
-              justifySelf: "flex-start",
-              flexGrow: 1,
-            }}
-          >
-            <Typography
-              variant="h5"
-              noWrap
-              component="h5"
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "#ddd",
-              }}
-            >
-              SpaceTune
-            </Typography>
-          </Link>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: {
-                xs: "none",
-                md: "flex",
-                alignItems: "flex-start",
-                width: "100%",
-              },
-            }}
-          >
-            {pages.map((page) => {
-              if (page.auth) {
-                if (session) {
-                  return (
-                    <Link
-                      key={page.path}
-                      href={page.path}
-                      style={{ display: "block" }}
-                    >
-                      <Button
-                        onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: "white" }}
-                      >
-                        {page.name}
-                      </Button>
-                    </Link>
-                  );
-                } else {
-                  return null;
-                }
-              } else {
-                return (
-                  <Link
-                    key={page.path}
-                    href={page.path}
-                    style={{ display: "block" }}
-                  >
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "white" }}
-                    >
-                      {page.name}
-                    </Button>
-                  </Link>
-                );
-              }
-            })}
-          </Box>
-          {session ? (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={`${session!.user!.image}`} />
+    return (
+        <>
+            <Hidden mdUp>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={toggleMobileSidebar}
+                    sx={{ mr: 1, marginLeft: 0 }}
+                >
+                    <MenuIcon sx={{ color: "orange", fontSize: "2rem", position: "fixed", top: "10px", left: "10px" }} />
                 </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem
-                    key={setting.path}
-                    onClick={() => handleCloseUserMenu(setting.path)}
-                  >
-                    <Typography textAlign="center">{setting.name}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-          ) : (
-            <Box sx={{ flexGrow: 0, display: "flex", gap: "10px" }}>
-              <Link href="/auth/register" passHref>
-                <Button variant="contained" color="secondary">
-                  <Box sx={{ display: { xs: "none", md: "block" } }}>
-                    Rigister
-                  </Box>
-                  <AppRegistrationIcon
-                    sx={{ marginLeft: { xs: 0, md: 1 }, width: 19 }}
-                  />
-                </Button>
-              </Link>
-              <Link href="/auth/login" passHref>
-                <Button variant="contained" color="secondary">
-                  <Box sx={{ display: { xs: "none", md: "block" } }}>Login</Box>
-                  <LoginIcon sx={{ marginLeft: { xs: 0, md: 1 }, width: 19 }} />
-                </Button>
-              </Link>
-            </Box>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+                <Drawer
+                    variant="temporary"
+                    open={isMobileSidebarOpen}
+                    onClose={toggleMobileSidebar}
+                    sx={{
+                        "& .MuiDrawer-paper": {
+                            width: "50vw",
+                            backgroundColor: "#4b0082", // Darker purple background color
+                        },
+                    }}
+                >
+                    <Box p={2} bgcolor="#4b0082" textAlign="center"> {/* Darker purple background color */}
+                        <Typography variant="h6" color="white">
+                            SpaceTune
+                        </Typography>
+                    </Box>
+                    <List>
+                        {pages.map((page) => (
+                            <Link key={page.name} href={page.path} passHref>
+                                <ListItem button onClick={handlePageClick}>
+                                    <ListItemIcon sx={{color: "lightsalmon"}}>
+                                        {page.icon}
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={<Typography color="white">{page.name}</Typography>}
+                                    />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                    <Divider />
+                    <List>
+                        {bottomPages.map((page) => (
+                            <Link key={page.name} href={page.path} passHref>
+                                <ListItem button onClick={handlePageClick}>
+                                    <ListItemIcon sx={{color: "orange"}}>
+                                        {page.icon}
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={<Typography color="lightblue">{page.name}</Typography>}
+                                    />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                </Drawer>
+            </Hidden>
+            <Hidden smDown>
+                <Drawer
+                    variant="permanent"
+                    className="d-md-block"
+                    sx={{
+                        width: 240,
+                        flexShrink: 0,
+                        "& .MuiDrawer-paper": {
+                            width: 240,
+                            boxSizing: "border-box",
+                            bgcolor: "#4b0082", // Darker purple background color
+                        },
+                    }}
+                >
+                    <Box p={2} bgcolor="#4b0082"> {/* Darker purple background color */}
+                        <Typography variant="h6" color="white" align="center">
+                            SpaceTune
+                        </Typography>
+                        <Divider sx={{ mt: 2, mb: 2 }} />
+                    </Box>
+                    <List>
+                        {pages.map((page) => (
+                            <Link key={page.name} href={page.path} passHref>
+                                <ListItem button>
+                                    <ListItemIcon sx={{color: "lightsalmon"}}>
+                                        {page.icon}
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={<Typography color="white">{page.name}</Typography>}
+                                    />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                    <Divider sx={{ mt: 2, mb: 2 }} />
+                    <List>
+                        {bottomPages.map((page) => (
+                            <Link key={page.name} href={page.path} passHref>
+                                <ListItem button>
+                                    <ListItemIcon sx={{color: "orange"}}>
+                                        {page.icon}
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={<Typography color="lightblue">{page.name}</Typography>}
+                                    />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                </Drawer>
+            </Hidden>
+        </>
+    );
 }
-export default ResponsiveAppBar;
+
+export default Sidebar;

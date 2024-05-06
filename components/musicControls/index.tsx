@@ -53,7 +53,7 @@ const MusicBar = () => {
 
   return (
     <AppBar position="fixed" style={{ top: 'auto', bottom: 0, backgroundColor: '#2e1c6d' }}>
-      <Toolbar style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Toolbar className="theme" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <IconButton style={{ color: '#ffffff' }} onClick={handlePreviousSong}>
             <SkipPreviousIcon />
@@ -70,7 +70,7 @@ const MusicBar = () => {
           <IconButton style={{ color: '#ffffff' }} onClick={handleNextSong}>
             <SkipNextIcon />
           </IconButton>
-          <Typography variant="body2" style={{ color: '#ffffff', marginLeft: '16px' }}>
+          <Typography variant="body2" style={{ color: '#ffffff', marginLeft: '16px', marginRight: "40px" }}>
             {musicName}
           </Typography>
         </div>

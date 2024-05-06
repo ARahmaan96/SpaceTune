@@ -28,7 +28,7 @@ const TrackCard: React.FC<TrackCardProps> = ({
   return (
     <Card
       sx={{
-        width: 600,
+        //width: 500,
         height: 100,
         backgroundImage: "url(" + track_image + ")",
         backgroundSize: "cover",
