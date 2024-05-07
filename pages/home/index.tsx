@@ -9,6 +9,7 @@ import ArtistCard, {
   ArtistCardProps,
 } from "@/components/musicCards/ArtistCard";
 import axios from "axios";
+import Link from "next/link";
 
 const HomePage: React.FC = () => {
   //const artists = Array.from({ length: 20 }, (_, i) => i + 1);
@@ -160,11 +161,13 @@ const HomePage: React.FC = () => {
               pointerEvents: isDraggingCategories ? "none" : "auto",
             }}
           >
+            {/* Routing Problem */}
+            <Link href={`/home/categories/${category.id}`}>
             <CategoryCard
               name={category.name}
               image={category.image}
               id={category.id}
-            />
+            /> </Link>
           </div>
         ))}
       </div>
@@ -185,16 +188,19 @@ const HomePage: React.FC = () => {
             key={artist.id}
             style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
           >
-            <ArtistCard
-              id={artist.id}
-              artist_name={artist.artist_name}
-              nationality={artist.nationality}
-              language={artist.language}
-              image_url={artist.image_url}
-              age={artist.age}
-              no_of_albums={artist.no_of_albums}
-              no_of_songs={artist.no_of_songs}
-            />
+            {/* Routing Problem */}
+            <Link href={`/home/artists/${artist.id}`}>
+              <ArtistCard
+                id={artist.id}
+                artist_name={artist.artist_name}
+                nationality={artist.nationality}
+                language={artist.language}
+                image_url={artist.image_url}
+                age={artist.age}
+                no_of_albums={artist.no_of_albums}
+                no_of_songs={artist.no_of_songs}
+              />
+            </Link>
           </div>
         ))}
       </div>
