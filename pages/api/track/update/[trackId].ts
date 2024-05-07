@@ -30,9 +30,11 @@ export default async function handler(req: any, res: any) {
         console.log(filePath);
         fs.writeFile(filePath, JSON.stringify(db, null, 2), (err: any) => {
           if (err) {
-            console.error("Error saving movies to file:", err);
+            console.error("Error saving data to file:", err);
+            res.status(500).json({ message: "Internal Server Error!" });
           } else {
-            console.log("Movies saved to file successfully");
+            console.log("Data saved to file successfully");
+            res.status(200).json({ message: "Track updated successfully!" });
           }
         });
 

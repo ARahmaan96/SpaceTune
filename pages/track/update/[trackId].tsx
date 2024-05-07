@@ -126,7 +126,7 @@ function UpdateTrack() {
       <Form.Group className="mb-3" controlId="formBasicCategoryId">
         <Form.Label>Category ID (Optional)</Form.Label>
         <Form.Control
-          type="number"
+          type="text"
           placeholder="Enter category ID"
           name="category_id"
           value={formData.category_id}
