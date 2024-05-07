@@ -3,7 +3,7 @@ import axios from "axios";
 import { Container, Grid, Typography } from "@mui/material";
 import ArtistCard, { ArtistCardProps } from "@/components/musicCards/ArtistCard";
 
-const CategoriesPage = () => {
+const ArtistsPage = () => {
   const [artists, setArtists] = useState<ArtistCardProps[]>([]);
 
   useEffect(() => {
@@ -56,4 +56,4 @@ const CategoriesPage = () => {
   );
 };
 
-export default CategoriesPage;
+export default ArtistsPage;

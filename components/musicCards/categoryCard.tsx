@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import {
   Card,
   CardActionArea,
@@ -13,8 +14,12 @@ export interface CategoryCardProps {
   image: string;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ name, image }) => {
-  const handleClick = () => {};
+const CategoryCard: React.FC<CategoryCardProps> = ({ id, name, image }) => {
+  const router = useRouter();
+  //Routing Problem
+  const handleClick = () => {
+    router.push(`/home/categories/${id}`);
+  };
 
   return (
     <Card

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import {
   Card,
   CardActionArea,
@@ -28,8 +29,9 @@ const ArtistCard: React.FC<ArtistCardProps> = ({
   no_of_albums,
   no_of_songs,
 }) => {
+  const router = useRouter();
   const handleClick = () => {
-    // Handle click event for the artist card
+    router.push(`/home/artists/${id}`);
   };
 
   const imageStyle = {
