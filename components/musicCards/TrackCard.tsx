@@ -250,6 +250,7 @@ import {
   Backdrop,
   Box,
 } from "@mui/material";
+import { useRouter } from "next/router";
 
 export interface TrackCardProps {
   id: number;
@@ -262,6 +263,7 @@ export interface TrackCardProps {
 }
 
 const TrackCard: React.FC<TrackCardProps> = ({
+  id,
   name,
   artist_name,
   track_image,
@@ -269,6 +271,12 @@ const TrackCard: React.FC<TrackCardProps> = ({
   duration,
   handleClick, // Received handleClick prop
 }) => {
+  const router = useRouter();
+
+  handleClick = () => {
+    router.push(`/track/${id}`);
+  };
+
   return (
     <Card
       sx={{

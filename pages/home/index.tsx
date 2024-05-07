@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Container, Typography, Avatar, Paper, Grid } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import CategoryCard, {
   CategoryCardProps,
 } from "@/components/musicCards/CategoryCard";

@@ -10,9 +10,10 @@ export default async function handler(req: any, res: any) {
       const newTrack = req.body;
       await axios.post("http://localhost:3001/tracks", newTrack);
       res.status(200).json();
-      // Handle POST request if needed
-    } else {
-      res.status(405).json({ message: "Method not allowed!" });
+    } else if (req.method === "PUT") {
+      const newTrack = req.body;
+      await axios.put("http://localhost:3001/tracks", newTrack);
+      res.status(200).json();
     }
   } catch (err) {
     console.error(err);
