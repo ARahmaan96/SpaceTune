@@ -10,6 +10,7 @@ import ArtistCard, {
 } from "@/components/musicCards/ArtistCard";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const HomePage: React.FC = () => {
   //const artists = Array.from({ length: 20 }, (_, i) => i + 1);
@@ -23,6 +24,7 @@ const HomePage: React.FC = () => {
   const [scrollLeftCategories, setScrollLeftCategories] = useState(0);
   const [scrollLeftArtists, setScrollLeftArtists] = useState(0);
 
+  const router = useRouter();
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       if (isDraggingCategories) {
@@ -161,13 +163,14 @@ const HomePage: React.FC = () => {
               pointerEvents: isDraggingCategories ? "none" : "auto",
             }}
           >
-            {/* Routing Problem */}
             <Link href={`/home/categories/${category.id}`}>
-            <CategoryCard
-              name={category.name}
-              image={category.image}
-              id={category.id}
-            /> </Link>
+              {/* Routing Problem */}
+              <CategoryCard
+                name={category.name}
+                image={category.image}
+                id={category.id}
+              />{" "}
+            </Link>
           </div>
         ))}
       </div>

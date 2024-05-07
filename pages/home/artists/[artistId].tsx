@@ -10,11 +10,12 @@ import {
   List,
 } from "@mui/material";
 import TrackCard, { TrackCardProps } from "@/components/musicCards/TrackCard";
+import { ArtistCardProps } from "@/components/musicCards/ArtistCard";
 
 const ArtistPage = () => {
   const router = useRouter();
   const { artistId } = router.query;
-  const [artistData, setArtistData] = useState(null);
+  const [artistData, setArtistData] = useState<ArtistCardProps | null>(null);
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
@@ -123,8 +124,9 @@ const ArtistPage = () => {
                 Songs:
               </Typography>
               <List>
-                {songs.map((song) => (
+                {songs.map((song: TrackCardProps) => (
                   <TrackCard
+                    id={song.id}
                     key={song.id}
                     name={song.name}
                     artist_name={song.artist_name}

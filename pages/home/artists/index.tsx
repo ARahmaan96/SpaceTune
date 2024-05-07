@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Grid, Typography } from "@mui/material";
-import ArtistCard, { ArtistCardProps } from "@/components/musicCards/ArtistCard";
+import ArtistCard, {
+  ArtistCardProps,
+} from "@/components/musicCards/ArtistCard";
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState<ArtistCardProps[]>([]);
