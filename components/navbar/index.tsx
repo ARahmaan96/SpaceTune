@@ -151,7 +151,8 @@ function Sidebar() {
                     style={{
                       display: "flex",
                       gap: 10,
-                      justifyContent: "center",
+                      marginLeft: "10px",
+                      justifyContent: "flex-start",
                       alignItems: "center",
                     }}
                   >
@@ -287,7 +288,8 @@ function Sidebar() {
                     style={{
                       display: "flex",
                       gap: 10,
-                      justifyContent: "center",
+                      marginLeft: "10px",
+                      justifyContent: "flex-start",
                       alignItems: "center",
                     }}
                   >
