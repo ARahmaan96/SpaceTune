@@ -14,10 +14,13 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Hidden from "@mui/material/Hidden";
 import LoginIcon from "@mui/icons-material/Login";
-import { Box } from "@mui/material";
+import { Avatar, Box, Menu, MenuItem, Tooltip } from "@mui/material";
 import CategoryIcon from "@mui/icons-material/Category";
 import Person4Icon from "@mui/icons-material/Person4";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 function Sidebar() {
   const pages = [
@@ -40,8 +43,15 @@ function Sidebar() {
     { name: "Login", path: "/auth/login", icon: <LoginIcon /> },
     { name: "Register", path: "/auth/register", icon: <LoginIcon /> },
   ];
-
+  const settings = [
+    { name: "Profile", path: "/user/profile" },
+    { name: "Logout", path: "/auth/logout" },
+  ];
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false);
+
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const toggleMobileSidebar = () => {
     setIsMobileSidebarOpen(!isMobileSidebarOpen);
@@ -50,6 +60,17 @@ function Sidebar() {
   const handlePageClick = () => {
     setIsMobileSidebarOpen(false); // Close the mobile sidebar when a page is clicked
   };
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = (path: string) => {
+    setAnchorElUser(null);
+    routher.push(path);
+  };
+
+  const routher = useRouter();
+  const { data: session } = useSession();
 
   return (
     <>
@@ -122,20 +143,76 @@ function Sidebar() {
           </List>
           <Divider />
           <List>
-            {bottomPages.map((page) => (
-              <Link key={page.name} href={page.path} passHref>
-                <ListItem button onClick={handlePageClick}>
-                  <ListItemIcon sx={{ color: "orange" }}>
-                    {page.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <Typography color="lightblue">{page.name}</Typography>
-                    }
-                  />
-                </ListItem>
-              </Link>
-            ))}
+            {session ? (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <div
+                    onClick={handleOpenUserMenu}
+                    style={{
+                      display: "flex",
+                      gap: 10,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <IconButton sx={{ p: 0 }}>
+                      <Avatar
+                        alt={session.user?.email?.toString()}
+                        src={`${session!.user!.image}`}
+                      />
+                    </IconButton>
+                    <Typography
+                      variant="h6"
+                      component="h6"
+                      sx={{ fontSize: 15 }}
+                      color={"#ddd"}
+                    >
+                      {session?.user?.name || session.user?.email}{" "}
+                    </Typography>
+                  </div>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem
+                      key={setting.path}
+                      onClick={() => handleCloseUserMenu(setting.path)}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            ) : (
+              bottomPages.map((page) => (
+                <Link key={page.name} href={page.path} passHref>
+                  <ListItem button>
+                    <ListItemIcon sx={{ color: "orange" }}>
+                      {page.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={
+                        <Typography color="lightblue">{page.name}</Typography>
+                      }
+                    />
+                  </ListItem>
+                </Link>
+              ))
+            )}
           </List>
         </Drawer>
       </Hidden>
@@ -202,20 +279,76 @@ function Sidebar() {
           </List>
           <Divider sx={{ mt: 2, mb: 2 }} />
           <List>
-            {bottomPages.map((page) => (
-              <Link key={page.name} href={page.path} passHref>
-                <ListItem button>
-                  <ListItemIcon sx={{ color: "orange" }}>
-                    {page.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <Typography color="lightblue">{page.name}</Typography>
-                    }
-                  />
-                </ListItem>
-              </Link>
-            ))}
+            {session ? (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <div
+                    onClick={handleOpenUserMenu}
+                    style={{
+                      display: "flex",
+                      gap: 10,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <IconButton sx={{ p: 0 }}>
+                      <Avatar
+                        alt={session.user?.email?.toString()}
+                        src={`${session!.user!.image}`}
+                      />
+                    </IconButton>
+                    <Typography
+                      variant="h6"
+                      component="h6"
+                      sx={{ fontSize: 15 }}
+                      color={"#ddd"}
+                    >
+                      {session?.user?.name || session.user?.email}{" "}
+                    </Typography>
+                  </div>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem
+                      key={setting.path}
+                      onClick={() => handleCloseUserMenu(setting.path)}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            ) : (
+              bottomPages.map((page) => (
+                <Link key={page.name} href={page.path} passHref>
+                  <ListItem button>
+                    <ListItemIcon sx={{ color: "orange" }}>
+                      {page.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={
+                        <Typography color="lightblue">{page.name}</Typography>
+                      }
+                    />
+                  </ListItem>
+                </Link>
+              ))
+            )}
           </List>
         </Drawer>
       </Hidden>

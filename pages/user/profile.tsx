@@ -27,10 +27,10 @@ export default function App() {
         {/* BACKGROUND */}
         <Grid container direction="column" sx={{ overflowX: "hidden" }}>
           <Grid item xs={12} md={6}>
-            <Image
+            <img
               alt="avatar"
               style={{
-                width: "100vw",
+                width: "calc(100vw - 250px)",
                 height: "35vh",
                 objectFit: "cover",
                 objectPosition: "50% 50%",
@@ -50,7 +50,6 @@ export default function App() {
             sx={{
               position: "absolute",
               top: "20vh",
-              px: { xs: 0, md: 7 },
             }}
           >
             {/* PROFILE CARD */}

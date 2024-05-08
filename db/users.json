@@ -40,19 +40,11 @@
     "type": "user"
   },
   {
-    "id": "95215c05-ceaf-44ed-ad06-964fffc992ee",
+    "id": "e35f9fb8-c861-464c-a154-e954b9632120",
     "name": "Abdelrahman Khallaf",
     "email": "abdokhalaf118@gmail.com",
     "password": "123",
-    "image": "/uplodes/1715156802614-660698054-image1.png",
-    "type": "user"
-  },
-  {
-    "id": "ff3ac3a0-a239-4e2f-b87d-f643d3120684",
-    "name": "Abdelrahman Khallaf",
-    "email": "abdokhalaf118@gmail.com",
-    "password": "123",
-    "image": "/uplodes/1715171986213-493315223-icons8-login-64.png",
+    "image": "/uplodes/1715202775093-260230103-image1.png",
     "type": "user"
   }
 ]
