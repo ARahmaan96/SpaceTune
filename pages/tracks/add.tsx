@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { v4 as uuid } from "uuid";
+import { useRouter } from "next/router";
 
 function AddMTrack() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     track_image: "",
@@ -39,8 +41,8 @@ function AddMTrack() {
         category_id: "",
         duration: "",
       });
-
       alert("Track added successfully!");
+      router.push("/");
     } catch (error) {
       console.error("Error adding Track:", error);
       alert("Failed to add Track. Please try again.");

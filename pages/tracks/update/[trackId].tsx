@@ -50,6 +50,7 @@ function UpdateTrack() {
       });
 
       alert("Track updated successfully!");
+      router.push("/");
     } catch (error) {
       console.error("Error updating Track:", error);
       alert("Failed to update Track. Please try again.");
