@@ -17,6 +17,7 @@ export default function App({
             style={{
               display: "flex",
               alignItems: "start",
+              justifyContent: "center"
             }}
           >
             <NavBar></NavBar>
