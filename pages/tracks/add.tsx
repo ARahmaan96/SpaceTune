@@ -50,99 +50,112 @@ function AddMTrack() {
   };
 
   return (
-    <Form
-      className="p-5 m-auto"
-      onSubmit={handleSubmit}
+    <div
       style={{
-        display: "flex",
-        flexDirection: "column",
         position: "absolute",
-        top: "20px",
-        left: "15vw",
-        right: "5vw",
-        bottom: "100px",
+        marginBottom: "20px",
+        top: "1px",
+        left: "20px",
+        right: "0vw",
+        bottom: "55px",
         minWidth: "80vw",
-        maxWidth: "80vw",
+        overflowY: "auto",
       }}
     >
-      <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicImageUrl">
-        <Form.Label>Track Image URL</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter image URL"
-          name="track_image"
-          value={formData.track_image}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicArtistName">
-        <Form.Label>Artist Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter artist name"
-          name="artist_name"
-          value={formData.artist_name}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicArtistImageUrl">
-        <Form.Label>Artist Image URL</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter artist image URL"
-          name="artist_image"
-          value={formData.artist_image}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicCategoryId">
-        <Form.Label>Category ID (Optional)</Form.Label>
-        <Form.Control
-          type="number"
-          placeholder="Enter category ID"
-          name="category_id"
-          value={formData.category_id}
-          onChange={handleChange}
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicDuration">
-        <Form.Label>Duration (Optional)</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter duration (e.g., 4:20)"
-          name="duration"
-          value={formData.duration}
-          onChange={handleChange}
-        />
-      </Form.Group>
-
-      <Button
-        variant="contained"
-        type="submit"
-        style={{ width: "100%", marginTop: 2, backgroundColor: "salmon" }}
+      <Form
+        className="p-5 m-auto"
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          position: "absolute",
+          top: "20px",
+          left: "15vw",
+          right: "5vw",
+          bottom: "100px",
+          minWidth: "80vw",
+          maxWidth: "80vw",
+        }}
       >
-        ADD
-      </Button>
-    </Form>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicImageUrl">
+          <Form.Label>Track Image URL</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter image URL"
+            name="track_image"
+            value={formData.track_image}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicArtistName">
+          <Form.Label>Artist Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter artist name"
+            name="artist_name"
+            value={formData.artist_name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicArtistImageUrl">
+          <Form.Label>Artist Image URL</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter artist image URL"
+            name="artist_image"
+            value={formData.artist_image}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicCategoryId">
+          <Form.Label>Category ID (Optional)</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter category ID"
+            name="category_id"
+            value={formData.category_id}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicDuration">
+          <Form.Label>Duration (Optional)</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter duration (e.g., 4:20)"
+            name="duration"
+            value={formData.duration}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Button
+          variant="contained"
+          type="submit"
+          style={{ width: "100%", marginTop: 2, backgroundColor: "salmon" }}
+        >
+          ADD
+        </Button>
+      </Form>
+    </div>
   );
 }
 

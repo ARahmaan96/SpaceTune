@@ -34,6 +34,7 @@ function Sidebar() {
   ];
   const adminPages = [
     { name: "Add Track", path: "/tracks/add", icon: <AddCircleIcon /> },
+    { name: "Add Artist", path: "/home/artists/add", icon: <AddCircleIcon /> },
   ];
   const bottomPages = [
     { name: "Login", path: "/auth/login", icon: <LoginIcon /> },

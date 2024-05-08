@@ -1,13 +1,18 @@
 [
   {
-    "id": "1",
     "artist_name": "Ed Sheeran",
     "nationality": "British",
     "language": "English",
     "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRc4AESl1S8fji2_mLhZtdwAarkWbLSrGMtiVjMrrERAg4eew-B",
     "age": 33,
     "no_of_albums": 7,
-    "no_of_songs": "65"
+    "no_of_songs": "65",
+    "name": "Happy",
+    "track_image": "https://img.apmcdn.org/c2c019d1f2fb1632da09bdf5116fae98ce7e5f75/normal/37f98d-20170722-the-revolution-emmet-kowler-rock-the-garden04.jpg",
+    "artist_image": "https://2.bp.blogspot.com/-m2NCXhG-1fs/Uu0Yf-yiQAI/AAAAAAAAAQg/VtWYGaiPz0E/s1600/9.jpg",
+    "category_id": "1",
+    "duration": "02:30",
+    "id": "1"
   },
   {
     "id": "2",
@@ -68,15 +73,5 @@
     "age": 28,
     "no_of_albums": 4,
     "no_of_songs": "26"
-  },
-  {
-    "artist_name": "Ahmed Elghabour",
-    "nationality": "Egyptian",
-    "language": "Arabic",
-    "image_url": "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg",
-    "age": "25",
-    "no_of_albums": "5",
-    "no_of_songs": "20",
-    "id": "eec33a96-b1e5-4ea5-8a04-510976cb7f20"
   }
 ]
