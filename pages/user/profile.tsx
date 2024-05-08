@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ProfileCard from "@/components/profileCard";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const theme = createTheme();
 
@@ -26,7 +27,7 @@ export default function App() {
         {/* BACKGROUND */}
         <Grid container direction="column" sx={{ overflowX: "hidden" }}>
           <Grid item xs={12} md={6}>
-            <img
+            <Image
               alt="avatar"
               style={{
                 width: "100vw",

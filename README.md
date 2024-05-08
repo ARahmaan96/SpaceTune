@@ -81,7 +81,7 @@
 
 ---
 
-- NavBar (Routing, Pages Creation) [Jimmy] [Jimmy]
+- NavBar (Routing, Pages Creation), Playlist (Page & Cards) [Jimmy]
 - Profile, Rrgister, Login, [A.Rahman]
-- Cards (Track, Category, Playlist, Album, Artist) [Amgad] [ghabour]
+- Cards (Track, Category, Album, Artist) [Amgad] [ghabour]
 - HomePage [El-Gamal]
