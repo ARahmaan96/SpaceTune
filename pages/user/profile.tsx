@@ -12,6 +12,19 @@ const theme = createTheme();
 
 export default function App() {
   const { data: session } = useSession();
+  const [selectedFile, setSelectedFile] = React.useState<
+    string | ArrayBuffer | null
+  >(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setSelectedFile(e?.target?.result ?? null);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
   const router = useRouter();
 
