@@ -19,13 +19,19 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/router";
 
 function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = React.useState<boolean>();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    const email = data.get("email");
+    const password = data.get("password");
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false, // Redirect to callback page manually
     });
+
+    if (result) setError(true);
   };
 
   const { data: session } = useSession();
@@ -87,6 +93,7 @@ function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={() => error && setError(false)}
               />
               <TextField
                 margin="normal"
@@ -97,11 +104,17 @@ function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={() => error && setError(false)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+              {error && (
+                <Typography variant="body2" sx={{ color: "#d11" }}>
+                  Email or Password not valid
+                </Typography>
+              )}
               <Button
                 type="submit"
                 fullWidth

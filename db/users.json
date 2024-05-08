@@ -1,9 +1,9 @@
 [
   {
     "id": "1",
-    "name": "John Doe",
-    "age": 30,
-    "email": "john@example.com",
+    "name": "A.Rahamn",
+    "age": 999999,
+    "email": "arahman@gmail.com",
     "password": "123",
     "type": "admin"
   },
@@ -37,6 +37,14 @@
     "age": 28,
     "email": "sophia@example.com",
     "password": "123",
+    "type": "user"
+  },
+  {
+    "id": "95215c05-ceaf-44ed-ad06-964fffc992ee",
+    "name": "Abdelrahman Khallaf",
+    "email": "abdokhalaf118@gmail.com",
+    "password": "123",
+    "image": "/uplodes/1715156802614-660698054-image1.png",
     "type": "user"
   }
 ]

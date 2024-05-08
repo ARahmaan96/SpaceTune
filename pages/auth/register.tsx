@@ -8,7 +8,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -17,18 +17,52 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const [selectedFile, setSelectedFile] = React.useState<
+    string | ArrayBuffer | null
+  >(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setSelectedFile(e?.target?.result ?? null);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+    try {
+      const response = await axios.post("/api/user/register", data);
+
+      if (response.status == 200) {
+        console.log("File uploaded successfully");
+        // login
+        const result = await signIn("credentials", {
+          email: data.get("email"),
+          password: data.get("password"),
+          redirect: false, // Redirect to callback page manually
+        });
+        // redirect to home
+        router.push("/");
+      } else {
+        alert(response.data);
+        console.log(response);
+      }
+    } catch (error) {
+      alert(error);
+      console.error("Error uploading file:", error);
+    }
   };
 
   return (
@@ -59,18 +93,70 @@ export default function SignUp() {
               padding: 2,
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign up
-            </Typography>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
               sx={{ mt: 3 }}
             >
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  width: "100",
+                  alignItems: "center",
+                }}
+              >
+                <input
+                  accept="image/*"
+                  id="contained-button-file"
+                  name="image"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+                <label
+                  htmlFor="contained-button-file"
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "center",
+                    position: "relative",
+                  }}
+                >
+                  <CameraAltIcon
+                    sx={{
+                      position: "absolute",
+                      bottom: 10,
+                      right: 132,
+                      zIndex: 1,
+                      width: 25,
+                      height: 25,
+                      padding: "3px",
+                      backgroundColor: "#ddd",
+                      borderRadius: "50px",
+                    }}
+                  />
+                  <Avatar
+                    sx={{
+                      m: 1,
+                      bgcolor: "secondary.main",
+                      height: 100,
+                      width: 100,
+                    }}
+                    src={selectedFile ? selectedFile.toString() : undefined}
+                  ></Avatar>
+                </label>
+              </Grid>
+
+              <Typography
+                component="h1"
+                variant="h5"
+                sx={{ marginY: 2, textAlign: "center" }}
+              >
+                Sign up
+              </Typography>
+
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -114,6 +200,7 @@ export default function SignUp() {
                     autoComplete="new-password"
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <FormControlLabel
                     control={
@@ -123,6 +210,14 @@ export default function SignUp() {
                   />
                 </Grid>
               </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1, mb: 2 }}
+              >
+                Sign Up
+              </Button>
 
               <Button
                 onClick={() => signIn("google")}
@@ -175,14 +270,7 @@ export default function SignUp() {
                 <FacebookIcon style={{ marginRight: 5 }} />
                 Sign In with Facebook
               </Button>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 1, mb: 2 }}
-              >
-                Sign Up
-              </Button>
+
               <Grid container justifyContent="center">
                 <Grid item>
                   <Link href="#" variant="body2">

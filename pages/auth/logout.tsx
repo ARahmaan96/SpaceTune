@@ -10,7 +10,8 @@ export default function Logout() {
     const handleLogout = async () => {
       if (!session) return router.push("/");
       await signOut();
-      router.push("/");
+      // router.push("/");
+      window.location.href = "/";
     };
 
     handleLogout();
