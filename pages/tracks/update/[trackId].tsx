@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
 
 function UpdateTrack() {
@@ -20,12 +19,10 @@ function UpdateTrack() {
     duration: "",
   });
 
-  // const [trackDetails, setTrackDetails] = useState<any>(null);
-
   useEffect(() => {
     const fetchTrackDetails = async () => {
       try {
-        const response = await axios.get(`/api/track/${trackId}`);
+        const response = await axios.get(`/api/tracks/${trackId}`);
         console.log("Response:", response.data);
 
         setFormData((prevState) => ({ ...prevState, ...response.data }));
@@ -48,7 +45,7 @@ function UpdateTrack() {
     e.preventDefault();
 
     try {
-      await axios.put(`/api/track/update/${trackId}`, {
+      await axios.put(`/api/tracks/update/${trackId}`, {
         ...formData,
       });
 

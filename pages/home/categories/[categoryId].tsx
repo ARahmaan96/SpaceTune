@@ -20,7 +20,7 @@ const CategoryPage = () => {
     const fetchCategoryData = async () => {
       try {
         const response = await axios.get<any>(
-          `http://localhost:3000/categories/${categoryId}`
+          `/api/home/categories/${categoryId}`
         );
         setCategoryData(response.data);
       } catch (error) {

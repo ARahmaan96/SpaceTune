@@ -29,7 +29,7 @@ function AddMTrack() {
         id: uuid(),
       };
 
-      await axios.post("/api/track/add", newTrack);
+      await axios.post("/api/tracks", newTrack);
 
       setFormData({
         name: "",

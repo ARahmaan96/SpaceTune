@@ -1,4 +1,4 @@
-import axios from "axios";
+import catrgories from "@/db/categories.json";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -11,13 +11,9 @@ export default async function handler(
 
   try {
     if (req.method === "GET") {
-      const response = await axios.get(
-        `http://localhost:3000/categories/${categoryId}`
-      );
-      const categoryData = response.data;
-      res.status(200).json(categoryData);
+      const category = catrgories.find((cat) => cat.id === categoryId);
+      res.status(200).json(category);
     } else {
-      // Handle any other HTTP methods if needed
       res.status(405).end("Method Not Allowed");
     }
   } catch (err) {

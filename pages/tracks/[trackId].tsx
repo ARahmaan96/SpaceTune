@@ -13,7 +13,7 @@ const TrackDetails = () => {
   useEffect(() => {
     const fetchTrackDetails = async () => {
       try {
-        const response = await axios.get(`/api/track/${trackId}`);
+        const response = await axios.get(`/api/tracks/${trackId}`);
         console.log("Response:", response.data);
 
         setTrackDetails(response.data);
@@ -75,7 +75,7 @@ const TrackDetails = () => {
           <div className="movie_social">
             <IconButton
               component={Link}
-              href={`/track/update/${trackDetails.id}`}
+              href={`/tracks/update/${trackDetails.id}`}
               size="small"
               sx={{
                 color: "white",

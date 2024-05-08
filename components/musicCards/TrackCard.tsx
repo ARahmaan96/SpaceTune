@@ -274,7 +274,7 @@ const TrackCard: React.FC<TrackCardProps> = ({
   const router = useRouter();
 
   handleClick = () => {
-    router.push(`/track/${id}`);
+    router.push(`/tracks/${id}`);
   };
 
   return (

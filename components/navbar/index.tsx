@@ -33,7 +33,7 @@ function Sidebar() {
     { name: "About", path: "/about", icon: <InfoIcon /> },
   ];
   const adminPages = [
-    { name: "Add Track", path: "/track/add", icon: <AddCircleIcon /> },
+    { name: "Add Track", path: "/tracks/add", icon: <AddCircleIcon /> },
   ];
   const bottomPages = [
     { name: "Login", path: "/auth/login", icon: <LoginIcon /> },

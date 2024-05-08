@@ -102,7 +102,7 @@ const HomePage: React.FC = () => {
 
     const fetchTracks = async () => {
       try {
-        const response = await axios.get("/api/track");
+        const response = await axios.get("/api/tracks");
 
         setTracks(response.data);
       } catch (error) {
