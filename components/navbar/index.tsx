@@ -58,7 +58,7 @@ function Sidebar() {
           aria-label="open drawer"
           edge="start"
           onClick={toggleMobileSidebar}
-          sx={{ mr: 1, marginLeft: 0 }}
+          sx={{ mr: 0, marginLeft: 0 }}
         >
           <MenuIcon
             sx={{
@@ -143,7 +143,7 @@ function Sidebar() {
           variant="permanent"
           className="d-md-block"
           sx={{
-            width: 240,
+            width: 220,
             "& .MuiDrawer-paper": {
               width: 240,
               height: "calc(100vh - 63px)",
@@ -160,7 +160,7 @@ function Sidebar() {
             },
           }}
         >
-          <Box p={2} bgcolor="#4b0082">
+          <Box py={2} bgcolor="#4b0082">
             {" "}
             {/* Darker purple background color */}
             <Typography variant="h6" color="white" align="center">
