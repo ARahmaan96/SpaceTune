@@ -46,5 +46,13 @@
     "password": "123",
     "image": "/uplodes/1715156802614-660698054-image1.png",
     "type": "user"
+  },
+  {
+    "id": "ff3ac3a0-a239-4e2f-b87d-f643d3120684",
+    "name": "Abdelrahman Khallaf",
+    "email": "abdokhalaf118@gmail.com",
+    "password": "123",
+    "image": "/uplodes/1715171986213-493315223-icons8-login-64.png",
+    "type": "user"
   }
 ]
