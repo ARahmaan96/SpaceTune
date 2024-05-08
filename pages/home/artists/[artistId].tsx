@@ -21,9 +21,7 @@ const ArtistPage = () => {
   useEffect(() => {
     const fetchArtistData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/Artists/${artistId}`
-        );
+        const response = await axios.get(`/api/artists/${artistId}`);
         setArtistData(response.data);
 
         // Fetch songs by artist name

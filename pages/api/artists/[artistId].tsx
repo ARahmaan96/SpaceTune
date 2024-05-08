@@ -1,4 +1,4 @@
-import axios from "axios";
+import artists from "@/db/artists.json";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -11,10 +11,7 @@ export default async function handler(
 
   try {
     if (req.method === "GET") {
-      const response = await axios.get(
-        `http://localhost:3000/Artists/${artistId}`
-      );
-      const artistData = response.data;
+      const artistData = artists.find((art) => art.id === artistId);
       res.status(200).json(artistData);
     } else {
       // Handle any other HTTP methods if needed

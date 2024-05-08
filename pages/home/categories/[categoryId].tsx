@@ -30,7 +30,7 @@ const CategoryPage = () => {
 
     const fetchTracks = async () => {
       try {
-        const response = await axios.get<any>("/api/home/track");
+        const response = await axios.get<any>("/api/tracks");
         setTracks(
           response.data.filter(
             (track: { category_id: string | string[] | undefined }) =>
