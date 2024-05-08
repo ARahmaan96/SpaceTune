@@ -25,12 +25,16 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         {/* BACKGROUND */}
-        <Grid container direction="column" sx={{ overflowX: "hidden" }}>
-          <Grid item xs={12} md={6}>
+        <Grid
+          container
+          direction="column"
+          sx={{ overflowX: "hidden", paddingBottom: 100 }}
+        >
+          <Grid item xs={12} md={6} overflow={"hidden"}>
             <img
               alt="avatar"
               style={{
-                width: "calc(100vw - 250px)",
+                width: "calc(100vw - 240px)",
                 height: "35vh",
                 objectFit: "cover",
                 objectPosition: "50% 50%",
@@ -50,6 +54,8 @@ export default function App() {
             sx={{
               position: "absolute",
               top: "20vh",
+              marginX: 10,
+              width: "calc(100vw - 400px)",
             }}
           >
             {/* PROFILE CARD */}

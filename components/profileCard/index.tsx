@@ -65,7 +65,7 @@ export default function ProfileCard() {
 
         {/* DETAILS */}
         <Grid container>
-          <Grid item xs={6} sx={{ textAlign: "right" }}>
+          <Grid item xs={5} sx={{ textAlign: "right" }}>
             <Typography style={styles.details}>Name</Typography>
             <Typography style={styles.details}>Email</Typography>
           </Grid>
