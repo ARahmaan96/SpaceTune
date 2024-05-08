@@ -1,11 +1,8 @@
-import axios from "axios";
-
+import catrgories from "@/db/categories.json";
 export default async function handler(req: any, res: any) {
   try {
     if (req.method === "GET") {
-      const response = await axios.get("http://localhost:3001/categories");
-      const allData = response.data;
-      res.status(200).json(allData);
+      res.status(200).json(catrgories);
     } else if (req.method === "POST") {
       // Handle POST request if needed
     } else {

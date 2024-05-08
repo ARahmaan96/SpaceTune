@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "artist_name": "Ed Sheeran",
+    "nationality": "British",
+    "language": "English",
+    "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRc4AESl1S8fji2_mLhZtdwAarkWbLSrGMtiVjMrrERAg4eew-B",
+    "age": 33,
+    "no_of_albums": 7,
+    "no_of_songs": "65"
+  },
+  {
+    "id": "2",
+    "artist_name": "Dua Lipa",
+    "nationality": "English",
+    "language": "English",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgqBdtFDbgVJD-oKDGuDohNHqwKkB_B6Okpw&usqp=CAU",
+    "age": 28,
+    "no_of_albums": 3,
+    "no_of_songs": "25"
+  },
+  {
+    "id": "3",
+    "artist_name": "Taylor Swift",
+    "nationality": "American",
+    "language": "English",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLhdVRVlOS1z-4COC3NEi2OXQZ254aiASknQ&usqp=CAU",
+    "age": 34,
+    "no_of_albums": 11,
+    "no_of_songs": "243"
+  },
+  {
+    "id": "4",
+    "artist_name": "Billie Eilish",
+    "nationality": "American",
+    "language": "English",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx6aLaGul9H8PHEMYqsQvKMyDk7z-vu__3rA&usqp=CAU",
+    "age": 21,
+    "no_of_albums": 2,
+    "no_of_songs": "33"
+  },
+  {
+    "id": "5",
+    "artist_name": "The Weeknd",
+    "nationality": "Canadian",
+    "language": "English",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7965cKQ9_WF_mStdzMZH-43_UkgbVnOcd3g&usqp=CAU",
+    "age": 33,
+    "no_of_albums": 5,
+    "no_of_songs": "298"
+  },
+  {
+    "id": "6",
+    "artist_name": "Eminem",
+    "nationality": "American",
+    "language": "English",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4f691jeMbb1zc1kh9F1Iwc4E7XP__W3SqlQ&usqp=CAU",
+    "age": 50,
+    "no_of_albums": 11,
+    "no_of_songs": "59"
+  },
+  {
+    "id": "7",
+    "artist_name": "Halsey",
+    "nationality": "American",
+    "language": "English",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-VPp6ewBS2AlSNmw8dtKUfG28-EXtYpW4nQ&usqp=CAU",
+    "age": 28,
+    "no_of_albums": 4,
+    "no_of_songs": "26"
+  }
+]

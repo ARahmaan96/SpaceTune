@@ -22,14 +22,14 @@ const ArtistPage = () => {
     const fetchArtistData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/Artists/${artistId}`
+          `http://localhost:3000/Artists/${artistId}`
         );
         setArtistData(response.data);
 
         // Fetch songs by artist name
         if (response.data?.artist_name) {
           const songsResponse = await axios.get(
-            `http://localhost:3001/tracks?artist_name=${encodeURIComponent(
+            `http://localhost:3000/tracks?artist_name=${encodeURIComponent(
               response.data.artist_name
             )}`
           );

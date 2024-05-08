@@ -1,11 +1,8 @@
-import axios from "axios";
-
+import artists from "@/db/artists.json";
 export default async function handler(req: any, res: any) {
   try {
     if (req.method === "GET") {
-      const response = await axios.get("http://localhost:3001/Artists");
-      const allData = response.data;
-      res.status(200).json(allData);
+      res.status(200).json(artists);
     } else if (req.method === "POST") {
       // Handle POST request if needed
     } else {

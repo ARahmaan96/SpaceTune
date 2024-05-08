@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import TrackCard, { TrackCardProps } from "@/components/musicCards/TrackCard";
 
 const CategoryPage = () => {
   const router = useRouter();
   const { categoryId } = router.query;
-  const [categoryData, setCategoryData] = useState(null);
-  const [tracks, setTracks] = useState([]);
+  const [categoryData, setCategoryData] = useState<any>(null);
+  const [tracks, setTracks] = useState<any>([]);
 
   useEffect(() => {
     const fetchCategoryData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/categories/${categoryId}`);
+        const response = await axios.get<any>(
+          `http://localhost:3000/categories/${categoryId}`
+        );
         setCategoryData(response.data);
       } catch (error) {
         console.error(error);
@@ -22,8 +30,13 @@ const CategoryPage = () => {
 
     const fetchTracks = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/tracks');
-        setTracks(response.data.filter((track: { category_id: string | string[] | undefined; }) => track.category_id === categoryId));
+        const response = await axios.get<any>("/api/home/track");
+        setTracks(
+          response.data.filter(
+            (track: { category_id: string | string[] | undefined }) =>
+              track.category_id === categoryId
+          )
+        );
       } catch (error) {
         console.error(error);
       }
@@ -42,12 +55,12 @@ const CategoryPage = () => {
           <Card>
             <CardMedia
               component="img"
-              image={`/${categoryData.image}`}
-              alt={categoryData.name}
+              image={`/${categoryData?.image}`}
+              alt={categoryData?.name}
               sx={{
                 maxHeight: 350,
-                objectFit: 'cover',
-                width: '100%'
+                objectFit: "cover",
+                width: "100%",
               }}
             />
             <CardContent>
@@ -56,8 +69,12 @@ const CategoryPage = () => {
               </Typography>
             </CardContent>
           </Card>
-          {tracks.map((track) => (
-            <TrackCard key={track.id} {...track} handleClick={() => console.log('Track clicked')} />
+          {tracks.map((track: any) => (
+            <TrackCard
+              key={track.id}
+              {...track}
+              handleClick={() => console.log("Track clicked")}
+            />
           ))}
         </>
       ) : (
