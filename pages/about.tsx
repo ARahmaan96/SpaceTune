@@ -7,25 +7,22 @@ import {
   CardMedia,
   Avatar,
 } from "@mui/material";
+import { Copyright } from "@mui/icons-material";
 
 const teamMembers = [
   {
-    name: "Ahmed Elghabour",
-    image: "https://example.com/images/ahmed-elghabour.jpg",
+    name: "Ahmed Elghabour"
   },
   {
-    name: "Mohamed Gamal",
-    image: "https://example.com/images/mohamed-gamal.jpg",
+    name: "Mohamed Gamal"
   },
   {
-    name: "Ahmed Elgamal",
-    image: "https://example.com/images/ahmed-elgamal.jpg",
+    name: "Ahmed Elgamal"
   },
   {
-    name: "Abdulrahman Khallaf",
-    image: "https://example.com/images/abdulrahman-khallafah.jpg",
+    name: "Abdulrahman Khallaf"
   },
-  { name: "Ahmed Amgad", image: "https://example.com/images/ahmed-amgad.jpg" },
+  { name: "Ahmed Amgad"},
 ];
 
 const About = () => {
@@ -34,16 +31,16 @@ const About = () => {
       <Typography
         variant="h3"
         component="h1"
-        sx={{ textAlign: "center", paddingTop: "50px" }}
+        sx={{ textAlign: "center", paddingTop: "50px", paddingBottom: "20px", color: "cyan" }}
       >
         About Us
       </Typography>
       <Typography
         variant="body1"
         component="p"
-        sx={{ textAlign: "center", paddingBottom: "50px" }}
+        sx={{ textAlign: "center", paddingBottom: "50px", marginRight: "10%", marginLeft: "10%", color: "white" }}
       >
-        We are a team passionate about music and the Quran, and we created this
+        We are a team passionate about music and the Qur'an, and we created this
         website to provide a platform for users to enjoy both.
       </Typography>
 
@@ -51,11 +48,11 @@ const About = () => {
       <Typography
         variant="h5"
         component="h2"
-        sx={{ textAlign: "center", paddingBottom: "20px" }}
+        sx={{ textAlign: "center", paddingBottom: "20px", color: "cyan" }}
       >
         Our Team
       </Typography>
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={1} justifyContent="center">
         {teamMembers.map((member) => (
           <Grid
             item
@@ -64,15 +61,9 @@ const About = () => {
             // md={4}
             sx={{ textAlign: "center" }}
           >
-            <Card sx={{ display: "flex", alignItems: "center" }}>
-              <CardMedia
-                component="img"
-                image={member.image}
-                alt={member.name}
-                sx={{ width: "150px" }}
-              />
+            <Card sx={{ display: "flex", alignItems: "center", backgroundColor: "lightblue", marginLeft: "25px", marginRight: "25px", width: "290px", justifyContent: "center" }}>
               <CardContent>
-                <Typography variant="h6" component="div">
+                <Typography  style={{color: "darkblue", fontWeight: "bold"}} variant="h6" component="div">
                   {member.name}
                 </Typography>
               </CardContent>
@@ -85,14 +76,30 @@ const About = () => {
       <Typography
         variant="h5"
         component="h2"
-        sx={{ textAlign: "center", paddingTop: "50px" }}
+        sx={{ textAlign: "center", paddingTop: "50px", color: "cyan", paddingBottom: "20px" }}
       >
         Website Information
       </Typography>
-      <Typography variant="body1" component="p" sx={{ textAlign: "center" }}>
-        This website is a platform for music and Quran enthusiasts. You can find
-        a wide variety of music genres and Quran recitations to suit your taste.
+      <Typography variant="body1" component="p" sx={{ textAlign: "center", marginRight: "15%", marginLeft: "15%", color: "white", marginBottom: "2%" }}>
+        This website is a platform for music and Qur'an enthusiasts. You can find
+        a wide variety of music genres and Qur'an recitations to suit your taste.
         We are constantly adding new content, so be sure to check back often!
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          textAlign: "center",
+          color: "#FFFFFF",
+          marginTop: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Copyright
+          sx={{ marginRight: "5px", fontSize: "small" }}
+        />
+        SpaceTune
       </Typography>
     </div>
   );
