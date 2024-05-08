@@ -12,12 +12,14 @@ export default function App({
   return (
     <Suspense>
       <SessionProvider session={session}>
-        <div style={{ display: "flex", alignItems: "start" }}>
-          <NavBar></NavBar>
-          <div style={{ marginBottom: "100px" }}>
-            <Component {...pageProps} />
+        <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", alignItems: "start" }}>
+            <NavBar></NavBar>
+            <div style={{ marginBottom: "100px" }}>
+              <Component {...pageProps} />
+            </div>
           </div>
-          <div style={{ position: "absolute", zIndex: 9999 }}>
+          <div style={{ zIndex: 2000 }}>
             <MusicBar />
           </div>
         </div>

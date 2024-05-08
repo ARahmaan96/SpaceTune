@@ -144,11 +144,19 @@ function Sidebar() {
           className="d-md-block"
           sx={{
             width: 240,
-            flexShrink: 0,
             "& .MuiDrawer-paper": {
               width: 240,
+              height: "calc(100vh - 63px)",
               boxSizing: "border-box",
               bgcolor: "#4b0082", // Darker purple background color
+              overflowY: "auto", // Ensure the drawer can scroll
+              "&::-webkit-scrollbar": {
+                width: "8px", // Width of the scrollbar
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "lightgray", // Color of the scrollbar thumb
+                borderRadius: "4px", // Border radius of the scrollbar thumb
+              },
             },
           }}
         >
