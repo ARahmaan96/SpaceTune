@@ -162,16 +162,20 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  List,
+  Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link";
+import TrackCard from "@/components/musicCards/TrackCard";
 
 const ArtistPage = () => {
   const router = useRouter();
   const { artistId } = router.query;
 
   const [artistData, setArtistData] = useState<any>(null);
+  const [tracks, setTracks] = useState<any>([]);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   useEffect(() => {
@@ -183,9 +187,22 @@ const ArtistPage = () => {
         console.error(error);
       }
     };
+    const fetchTracks = async () => {
+      try {
+        const response = await axios.get<any>("/api/tracks");
+        setTracks(
+          response.data.filter(
+            (track: any) => track.artist_name === artistData.artist_name
+          )
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
     if (artistId) {
       fetchArtistData();
+      fetchTracks();
     }
   }, [artistId]);
 
@@ -297,6 +314,34 @@ const ArtistPage = () => {
           className="blur_back"
           style={{ backgroundImage: `url(${artistData.image_url})` }}
         />
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          // gap: "20px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <List>
+          {tracks.map((song: any) => (
+            <div key={song.id} style={{ marginBottom: "15px" }}>
+              <TrackCard
+                id={song.id}
+                key={song.id}
+                name={song.name}
+                artist_name={song.artist_name}
+                track_image={song.track_image}
+                artist_image={song.artist_image}
+                duration={song.duration}
+                handleClick={() => {
+                  // Handle click on track card
+                }}
+              />
+            </div>
+          ))}
+        </List>
       </div>
 
       {/* Confirmation Dialog */}
