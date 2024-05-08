@@ -68,5 +68,15 @@
     "age": 28,
     "no_of_albums": 4,
     "no_of_songs": "26"
+  },
+  {
+    "artist_name": "Ahmed Elghabour",
+    "nationality": "Egyptian",
+    "language": "Arabic",
+    "image_url": "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg",
+    "age": "25",
+    "no_of_albums": "5",
+    "no_of_songs": "20",
+    "id": "eec33a96-b1e5-4ea5-8a04-510976cb7f20"
   }
 ]
