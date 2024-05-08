@@ -1,4 +1,6 @@
 import tracks from "@/db/tracks.json";
+import fs from "fs";
+import path from "path";
 
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -19,6 +21,7 @@ export default async function handler(
       const index = tracks.findIndex((trk) => trk.id === trackId);
       if (index !== -1) {
         tracks.splice(index, 1);
+        saveTracksToJSON();
         res.status(200).json({ message: "Track deleted successfully" });
       } else {
         res.status(404).json({ message: "Track not found" });
@@ -30,4 +33,9 @@ export default async function handler(
     console.error(err);
     res.status(500).json({ message: "Something went wrong" });
   }
+}
+
+function saveTracksToJSON() {
+  const filePath = path.resolve(__dirname, "../../../../../db/tracks.json");
+  fs.writeFileSync(filePath, JSON.stringify(tracks, null, 2));
 }

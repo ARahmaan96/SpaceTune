@@ -1,6 +1,6 @@
 [
   {
-    "name": "Happyyy",
+    "name": "Happy",
     "track_image": "https://img.apmcdn.org/c2c019d1f2fb1632da09bdf5116fae98ce7e5f75/normal/37f98d-20170722-the-revolution-emmet-kowler-rock-the-garden04.jpg",
     "artist_name": "John Smith",
     "artist_image": "https://2.bp.blogspot.com/-m2NCXhG-1fs/Uu0Yf-yiQAI/AAAAAAAAAQg/VtWYGaiPz0E/s1600/9.jpg",
@@ -36,15 +36,6 @@
     "duration": "03:00"
   },
   {
-    "id": "6",
-    "name": "I Hope You Dance",
-    "track_image": "https://m.media-amazon.com/images/I/31MKG1RAZRL._UF1000,1000_QL80_.jpg",
-    "artist_name": "Lee Ann Womack",
-    "artist_image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyEjEOlKecdprPR1xzIw2HlD1A7ueIhC5FmoB_SkD3mD2w8EQA",
-    "category_id": "1",
-    "duration": "04:51"
-  },
-  {
     "id": "7",
     "name": "Man Made a Bar",
     "track_image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJs1ecoaomNbgey-XBgFBMY99SWXSkxrnQk_XiEIbd6BGiu2LW",
@@ -52,15 +43,6 @@
     "artist_image": "https://nashvillelifestyles.com/downloads/36606/download/200812_MW_JS_Video_0242%201.jpg?cb=48f2ba35f0e24054b046acb9dbcbe2e5",
     "category_id": "1",
     "duration": "03:10"
-  },
-  {
-    "id": "8",
-    "name": "Life Goes On",
-    "track_image": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Ed_Sheeran_-_Life_Goes_On.png/220px-Ed_Sheeran_-_Life_Goes_On.png",
-    "artist_name": "Ed Sheeran",
-    "artist_image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRc4AESl1S8fji2_mLhZtdwAarkWbLSrGMtiVjMrrERAg4eew-B",
-    "category_id": "1",
-    "duration": "03:42"
   },
   {
     "id": "9",
