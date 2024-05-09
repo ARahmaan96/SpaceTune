@@ -24,7 +24,7 @@ const ArtistsPage = () => {
 
   return (
     <Container sx={{ py: 8 }}>
-      <Typography color="white" variant="h4" align="center" gutterBottom>
+      <Typography color="white" variant="h4" align="center" gutterBottom style={{marginBottom: "30px"}}>
         Artists
       </Typography>
       <Grid

@@ -48,7 +48,7 @@ const ArtistPage = () => {
 
     fetchArtistData();
     fetchTracks();
-  });
+  },);
 
   const handleDelete = async () => {
     try {
@@ -81,9 +81,10 @@ const ArtistPage = () => {
         top: "20px",
         left: "20px",
         width: "80vw",
+        
       }}
     >
-      <div className="movie_card">
+      <div className="movie_card" style={{marginBottom: "30px", marginTop: "20px"}}>
         <div className="info_section">
           <div className="movie_header">
             <img

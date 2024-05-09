@@ -52,29 +52,30 @@ const CategoryPage = () => {
     <div>
       {categoryData ? (
         <>
-          <Card>
+          <Card style={{marginBottom: "40px", marginTop: "20px"}}>
             <CardMedia
               component="img"
               image={`/${categoryData?.image}`}
               alt={categoryData?.name}
               sx={{
                 maxHeight: 350,
-                objectFit: "cover",
-                width: "100%",
+                objectFit: "fill",
+                width: "500px",
               }}
             />
-            <CardContent>
+            <CardContent style={{textAlign: "center"}}>
               <Typography variant="h5" component="div">
                 Category: {categoryData.name}
               </Typography>
             </CardContent>
           </Card>
           {tracks.map((track: any) => (
+            <div key={track.id} style={{marginBottom: "20px"}}>
             <TrackCard
-              key={track.id}
               {...track}
               handleClick={() => console.log("Track clicked")}
             />
+            </div>
           ))}
         </>
       ) : (

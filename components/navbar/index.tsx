@@ -235,7 +235,7 @@ function Sidebar() {
             width: 220,
             "& .MuiDrawer-paper": {
               width: 240,
-              height: "calc(100vh - 63px)",
+              height: "calc(100vh + 0px)",
               boxSizing: "border-box",
               bgcolor: "#4b0082", // Darker purple background color
               overflowY: "auto", // Ensure the drawer can scroll
@@ -255,7 +255,7 @@ function Sidebar() {
             <CustomTypography align="center">
               SpaceTune
             </CustomTypography>
-            <Divider sx={{ mt: 2, mb: 2 }} />
+            <Divider />
           </Box>
           <List>
             {pages.map((page) => (
@@ -288,7 +288,7 @@ function Sidebar() {
               </Link>
             ))}
           </List>
-          <Divider sx={{ mt: 2, mb: 2 }} />
+          <Divider />
           <List>
             {session ? (
               <Box sx={{ flexGrow: 0 }}>

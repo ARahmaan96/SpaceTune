@@ -268,7 +268,7 @@ const CustomPlayerController = () => {
             </Box>
             <Box
                 sx={{
-                    minHeight: "65vh",
+                    minHeight: "67vh",
                     width: '85%',
                     opacity: 0.7,
                     display: 'flex',

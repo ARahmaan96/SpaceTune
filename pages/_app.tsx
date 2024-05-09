@@ -14,12 +14,9 @@ export default function App({
     <Suspense>
       <SessionProvider session={session}>
         <div className="d-flex flex-column">
-          <div className="w-100 d-flex alignItems-start justify-content-center" style={{ minHeight: "100vh", marginBottom: "10vh" }}>
+          <div className="w-100 d-flex alignItems-start justify-content-center" style={{ minHeight: "90vh", marginBottom: "10vh" }}>
             <div style={{ width: "15%"}}> <NavBar /></div>
               <Component {...pageProps} />
-          </div>
-          <div style={{ zIndex: 2000 }}>
-            <MusicBar />
           </div>
         </div>
       </SessionProvider>
