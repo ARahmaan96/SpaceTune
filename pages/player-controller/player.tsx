@@ -2,45 +2,31 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { PlayArrow, FastRewind, FastForward, Pause, VolumeUp, VolumeOff, SlowMotionVideo, Speed, FastForwardOutlined, PlayCircleOutline } from '@mui/icons-material';
 import { Box, IconButton, Slider, Button, Typography } from '@mui/material';
 import FastRewindOutlinedIcon from '@mui/icons-material/FastRewindOutlined';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentSong, setCurrentTime, setDuration, setIsMuted, setIsPlaying, setPlaybackSpeed, setVolume, songs } from '@/controller/slices/music_slice';
 
 const CustomPlayerController = () => {
+    const dispatch = useDispatch();
+    const song: {
+        volume: number,
+        isMuted: boolean,
+        duration: number,
+        isPlaying: boolean,
+        currentSong: number,
+        currentTime: number,
+        playbackSpeed: number,
+        slowerPlaybackSpeed: number,
+        fasterPlaybackSpeed: number,
+        neutralPlaybackSpeed: number
+    } = useSelector((state: any) => state.audio);
+    console.log(song);
+    console.log(song.isMuted);
     const audioRef = useRef<HTMLAudioElement>(null);
-    const [currentSong, setCurrentSong] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0.01);
-    const [duration, setDuration] = useState(0);
+
     const [lyrics, setLyrics] = useState([]);
-    const [volume, setVolume] = useState(50); 
-    const [isMuted, setIsMuted] = useState(false);
-    const [playbackSpeed, setPlaybackSpeed] = useState(1);
-    const [slowerPlaybackSpeed, setSlowerPlaybackSpeed] = useState(0.5);
-    const [neutralPlaybackSpeed, setNeutralPlaybackSpeed] = useState(1);
-    const [fasterPlaybackSpeed, setFasterPlaybackSpeed] = useState(1.5);
 
-    const songs = [
-        {
-            title: "Happy",
-            name: "Pharrell Williams",
-            source: "/Happy.mp3",
-            cover: "/happythumb.jpg",
-            lyricsUrl: "/Happy.srt",
-            controlsColor: "orange",
-            subtitlesColor: "rgba(255,255,255,0.9)",
-            subtitlesTextColor: "purple"
-        },
-        {
-            title: "Hello",
-            name: "Adele",
-            source: "/Hello.mp3",
-            cover: "/Hello.jpg",
-            lyricsUrl: "/Hello.srt",
-            controlsColor: "rgba(255,255,255,0.8)",
-            subtitlesColor: "rgba(0,0,0,0.2)",
-            subtitlesTextColor: "black"
-        },
-    ];
 
-    const parseSRT = (srtContent) => {
+    const parseSRT = (srtContent: any) => {
         const lines = srtContent.trim().split(/\r?\n/);
         const subtitles = [];
         let currentSubtitle = null;
@@ -75,93 +61,108 @@ const CustomPlayerController = () => {
 
     const loadLyrics = useCallback(async () => {
         try {
-            const response = await fetch(songs[currentSong].lyricsUrl);
+            const response = await fetch(songs[song.currentSong].lyricsUrl);
             const srtContent = await response.text();
             const parsedLyrics = parseSRT(srtContent);
             setLyrics(parsedLyrics);
         } catch (error) {
             console.error("Error loading lyrics:", error);
         }
-    }, [currentSong]);
+    }, [song.currentSong]);
 
     const handlePlayClick = useCallback(() => {
-        if (isPlaying) {
+        if (song.isPlaying) {
             audioRef.current?.pause();
         } else {
             audioRef.current?.play();
         }
-        setIsPlaying(!isPlaying);
-    }, [isPlaying]);
+        dispatch(setIsPlaying({ isPlaying: !song.isPlaying }));
+        // setIsPlaying(!isPlaying);
+    }, [dispatch, song.isPlaying]);
 
     const handlePreviousSong = useCallback(() => {
-        setCurrentSong(currentSong === 0 ? songs.length - 1 : currentSong - 1);
-    }, [currentSong]);
+        dispatch(setCurrentSong({ currentSong: song.currentSong === 0 ? songs.length - 1 : song.currentSong - 1 }));
+        // setCurrentSong(song.currentSong === 0 ? songs.length - 1 : song.currentSong - 1);
+    }, [dispatch, song.currentSong]);
 
     const handleForwardSong = useCallback(() => {
-        setCurrentSong(currentSong !== songs.length - 1 ? currentSong + 1 : 0);
-    }, [currentSong]);
+        dispatch(setCurrentSong({ currentSong: song.currentSong === songs.length - 1 ? 0 : song.currentSong + 1 }));
+        // setCurrentSong(currentSong !== songs.length - 1 ? currentSong + 1 : 0);
+    }, [dispatch, song.currentSong]);
 
-    const handleTimeUpdate = () => {
-        setCurrentTime(audioRef.current?.currentTime || 0);
-    };
+    const handleTimeUpdate = useCallback(() => {
+        dispatch(setCurrentTime({ currentTime: audioRef.current?.currentTime || 0 }));
+    }, [dispatch]);
 
     const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = Number(e.target.value);
-        setCurrentTime(newTime);
+        dispatch(setCurrentTime({ currentTime: newTime }));
+
+        // setCurrentTime(newTime);
         if (audioRef.current) {
             audioRef.current.currentTime = newTime;
         }
     };
 
     const handleVolumeChange = (event: Event, newValue: number | number[]) => {
-        setVolume(newValue as number);
+        dispatch(setVolume({ volume: newValue as number }));
+        // setVolume(newValue as number);
         if (audioRef.current) {
             audioRef.current.volume = newValue as number / 100;
-            setIsMuted(newValue === 0);
+            dispatch(setIsMuted({ isMuted: newValue === 0 }));
+            // setIsMuted(newValue === 0);
         }
     };
 
     const handleMuteToggle = () => {
-        const newMutedState = !isMuted;
-        setIsMuted(newMutedState);
+        const newMutedState = !song.isMuted;
+        dispatch(setIsMuted({ isMuted: newMutedState }));
+        dispatch(setVolume({ volume: newMutedState ? 0 : song.volume }));
+        // setIsMuted(newMutedState);
         if (audioRef.current) {
-            audioRef.current.volume = newMutedState ? 0 : volume / 100;
+            audioRef.current.volume = newMutedState ? 0 : song.volume / 100;
         }
     };
 
     const handleSpeedChange = (newSpeed: number) => {
-        setPlaybackSpeed(newSpeed);
+        dispatch(setPlaybackSpeed({ playbackSpeed: newSpeed }));
+        // setPlaybackSpeed(newSpeed);
         if (audioRef.current) {
             audioRef.current.playbackRate = newSpeed;
         }
     };
 
     const handleSlowerPlayback = () => {
-        if (playbackSpeed === slowerPlaybackSpeed) {
-            setPlaybackSpeed(neutralPlaybackSpeed);
+        if (song.playbackSpeed === song.slowerPlaybackSpeed) {
+            dispatch(setPlaybackSpeed(song.neutralPlaybackSpeed));
+            // setPlaybackSpeed(neutralPlaybackSpeed);
         } else {
-            setPlaybackSpeed(slowerPlaybackSpeed);
+            dispatch(setPlaybackSpeed(song.slowerPlaybackSpeed));
+            // setPlaybackSpeed(slowerPlaybackSpeed);
         }
         if (audioRef.current) {
-            audioRef.current.playbackRate = slowerPlaybackSpeed;
+            audioRef.current.playbackRate = song.slowerPlaybackSpeed;
         }
     };
 
     const handleNeutralPlayback = () => {
-        setPlaybackSpeed(neutralPlaybackSpeed);
+        dispatch(setPlaybackSpeed(song.neutralPlaybackSpeed));
+        // setPlaybackSpeed(neutralPlaybackSpeed);
         if (audioRef.current) {
-            audioRef.current.playbackRate = neutralPlaybackSpeed;
+            audioRef.current.playbackRate = song.neutralPlaybackSpeed;
         }
     };
 
     const handleFasterPlayback = () => {
-        if (playbackSpeed === fasterPlaybackSpeed) {
-            setPlaybackSpeed(neutralPlaybackSpeed);
+        if (song.playbackSpeed === song.fasterPlaybackSpeed) {
+            dispatch(setPlaybackSpeed(song.neutralPlaybackSpeed));
+            // setPlaybackSpeed(neutralPlaybackSpeed);
         } else {
-            setPlaybackSpeed(fasterPlaybackSpeed);
+            dispatch(setPlaybackSpeed(song.fasterPlaybackSpeed));
+            // setPlaybackSpeed(song.fasterPlaybackSpeed);
         }
         if (audioRef.current) {
-            audioRef.current.playbackRate = fasterPlaybackSpeed;
+            audioRef.current.playbackRate = song.fasterPlaybackSpeed;
         }
     };
 
@@ -172,16 +173,16 @@ const CustomPlayerController = () => {
         return () => {
             audio?.removeEventListener('timeupdate', handleTimeUpdate);
         };
-    }, []);
+    }, [handleTimeUpdate]);
 
     useEffect(() => {
         loadLyrics();
-    }, [currentSong, loadLyrics]);
+    }, [song.currentSong, loadLyrics]);
 
     const getCurrentLyric = () => {
         const currentSubtitle = lyrics.find((subtitle, index) => {
             const nextSubtitle = lyrics[index + 1];
-            return currentTime >= subtitle.start && (nextSubtitle ? currentTime < nextSubtitle.start : true);
+            return song.currentTime >= subtitle.start && (nextSubtitle ? song.currentTime < nextSubtitle.start : true);
         });
         return currentSubtitle ? currentSubtitle.text : '';
     };
@@ -198,7 +199,7 @@ const CustomPlayerController = () => {
                 position: 'relative',
                 width: '100%',
                 height: '100%',
-                backgroundImage: `url(${songs[currentSong].cover})`,
+                backgroundImage: `url(${songs[song.currentSong].cover})`,
                 backgroundSize: 'cover',
                 display: 'flex',
                 flexDirection: 'column',
@@ -213,42 +214,43 @@ const CustomPlayerController = () => {
                 borderRadius: '15px',
                 alignItems: 'center',
                 justifyContent: 'end',
-                backgroundColor: songs[currentSong].controlsColor,
+                backgroundColor: songs[song.currentSong].controlsColor,
                 flexDirection: 'column',
                 boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
                 marginTop: "5vh",
                 padding: "10px"
             }}>
-                <h2>{songs[currentSong].title}</h2>
-                <p>{songs[currentSong].name}</p>
-                <audio ref={audioRef} src={songs[currentSong].source} onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)} />
-                    <input
-                        className='progress'
-                        type="range"
-                        value={currentTime}
-                        max={audioRef.current ? audioRef.current.duration : 0}
-                        onChange={handleProgressChange}
-                        style={{width: "40%"}}
-                    />
+                <h2>{songs[song.currentSong].title}</h2>
+                <p>{songs[song.currentSong].name}</p>
+                <audio ref={audioRef} src={songs[song.currentSong].source} onLoadedMetadata={(e) => dispatch(setDuration({ duration: e.currentTarget.duration }))} />
+                <input
+                    className='progress'
+                    type="range"
+                    value={song.currentTime}
+                    max={audioRef.current ? audioRef.current.duration : 0}
+                    onChange={handleProgressChange}
+                    aria-label='time progress'
+                    style={{ width: "40%" }}
+                />
                 <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%', color: "blue" }}>
-                    <Typography variant="body1">{formatTime(currentTime)}</Typography>
-                    <Typography variant="body1">{formatTime(duration)}</Typography>
+                    <Typography variant="body1">{formatTime(song.currentTime)}</Typography>
+                    <Typography variant="body1">{formatTime(song.duration)}</Typography>
                 </div>
                 <div className='controls d-flex justify-content-center align-items-center'>
                     <IconButton color="primary" onClick={handlePreviousSong}>
                         <FastRewind />
                     </IconButton>
                     <IconButton color="primary" onClick={handlePlayClick}>
-                        {isPlaying ? <Pause /> : <PlayArrow />}
+                        {song.isPlaying ? <Pause /> : <PlayArrow />}
                     </IconButton>
                     <IconButton color="primary" onClick={handleForwardSong}>
                         <FastForward />
                     </IconButton>
                     <IconButton color="primary" onClick={handleMuteToggle}>
-                        {isMuted ? <VolumeOff /> : <VolumeUp />}
+                        {song.isMuted ? <VolumeOff /> : <VolumeUp />}
                     </IconButton>
                     <Slider
-                        value={volume}
+                        value={song.volume}
                         onChange={handleVolumeChange}
                         aria-labelledby="continuous-slider"
                         min={0}
@@ -268,7 +270,7 @@ const CustomPlayerController = () => {
             </Box>
             <Box
                 sx={{
-                    minHeight: "67vh",
+                    minHeight: "65vh",
                     width: '85%',
                     opacity: 0.7,
                     display: 'flex',
@@ -286,15 +288,15 @@ const CustomPlayerController = () => {
                     borderRadius: '15px',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    backgroundColor: songs[currentSong].subtitlesColor,
+                    backgroundColor: songs[song.currentSong].subtitlesColor,
                     padding: '10px',
                     marginTop: '20px',
-                    color: songs[currentSong].subtitlesTextColor,
+                    color: songs[song.currentSong].subtitlesTextColor,
                     textAlign: 'center',
                     fontWeight: "bold",
                     fontSize: "20pt"
                 }}>
-                    <p style={{marginBottom: "50px"}}>{getCurrentLyric()}</p>
+                    <p style={{ marginBottom: "50px" }}>{getCurrentLyric()}</p>
                 </Box>
             </Box>
         </Box>
