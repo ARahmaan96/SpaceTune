@@ -86,6 +86,7 @@ function Sidebar() {
   const routher = useRouter();
   const { data: session } = useSession();
 
+  console.log(session?.user?.image);
   return (
     <>
       <Hidden mdUp>
@@ -132,6 +133,7 @@ function Sidebar() {
                   <ListItemText
                     primary={<Typography color="white">{page.name}</Typography>}
                   />
+                  ;
                 </ListItem>
               </Link>
             ))}
