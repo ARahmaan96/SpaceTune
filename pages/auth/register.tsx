@@ -12,7 +12,7 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -69,9 +69,12 @@ export default function SignUp() {
     <ThemeProvider theme={defaultTheme}>
       <Box
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random?wallpapers)",
+          // backgroundImage: "url(https://source.unsplash.com/random?wallpapers)",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=1513&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          width: "100%",
           paddingY: 9,
         }}
       >
@@ -79,9 +82,10 @@ export default function SignUp() {
           component="main"
           maxWidth="xs"
           sx={{
-            backgroundColor: "rgba(256, 256, 256, 0.6)",
+            backgroundColor: "rgba(256, 256, 256, 0.8)",
             borderRadius: "7px",
             border: "solid 2px #ddd",
+            width: "80%",
           }}
         >
           <CssBaseline />

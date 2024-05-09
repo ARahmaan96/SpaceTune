@@ -5,11 +5,11 @@ import { Grid, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import Badge from "@mui/material/Badge";
 import Button from "@mui/material/Button";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import React from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 // STYLES
 const styles = {
@@ -27,15 +27,36 @@ const styles = {
 //APP
 export default function ProfileCard() {
   const { data: session } = useSession();
+  const router = useRouter();
   const [selectedFile, setSelectedFile] = React.useState<
     string | ArrayBuffer | null
   >(null);
+  const [user, setUser] = React.useState<any>({
+    email: session?.user?.email,
+    name: session?.user?.name,
+    image: session?.user?.image,
+  });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
 
-    // const password = data.get("password");
+    try {
+      const response = await axios.put("/api/user/profile", data);
+
+      console.log("submited");
+      if (response.status == 200) {
+        console.log("File uploaded successfully");
+        router.push("/");
+      } else {
+        alert(response.data);
+        console.log(response);
+      }
+    } catch (error) {
+      alert(error);
+      console.error("Error uploading file:", error);
+    }
   };
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -120,15 +141,17 @@ export default function ProfileCard() {
               <Typography style={styles.details}>Email</Typography>
             </Grid>
             {/* VALUES */}
-            <Grid item xs={6} sx={{ textAlign: "left" }}>
+            <Grid item xs={7} sx={{ textAlign: "left" }}>
               <TextField
                 style={styles.value}
-                value={session?.user?.name}
+                value={user.name}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
                 name="name"
               ></TextField>
               <TextField
                 style={styles.value}
-                value={session?.user?.email}
+                value={user.email}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
                 name="email"
               ></TextField>
             </Grid>
