@@ -34,7 +34,6 @@ export default function ProfileCard() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log([...data.keys()]);
 
     // const password = data.get("password");
   };
