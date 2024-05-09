@@ -16,4 +16,3 @@ SpaceTune: Music Streaming App
 - Track Cards (Have Title, CoverImage, Duration)
 - Artists Can (Add, Update, Delete) Their Songs
 - Logged In Users Can Create New Playlists, Add Songs To It, Remove From it.
-
