@@ -9,9 +9,9 @@ export default function Logout() {
   useEffect(() => {
     const handleLogout = async () => {
       if (!session) return router.push("/");
-      await signOut();
-      // router.push("/");
-      window.location.href = "/";
+      await signOut({ redirect: false, callbackUrl: "/" });
+      router.push("/");
+      // window.location.href = "/";
     };
 
     handleLogout();
