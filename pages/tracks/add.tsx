@@ -78,7 +78,7 @@ function AddMTrack() {
         }}
       >
         <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+          {/* <Form.Label>Name</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter name"
@@ -90,7 +90,7 @@ function AddMTrack() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicImageUrl">
-          <Form.Label>Track Image URL</Form.Label>
+          {/* <Form.Label>Track Image URL</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter image URL"
@@ -102,7 +102,7 @@ function AddMTrack() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicArtistName">
-          <Form.Label>Artist Name</Form.Label>
+          {/* <Form.Label>Artist Name</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter artist name"
@@ -114,7 +114,7 @@ function AddMTrack() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicArtistImageUrl">
-          <Form.Label>Artist Image URL</Form.Label>
+          {/* <Form.Label>Artist Image URL</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter artist image URL"
@@ -126,7 +126,7 @@ function AddMTrack() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCategoryId">
-          <Form.Label>Category ID (Optional)</Form.Label>
+          {/* <Form.Label>Category ID (Optional)</Form.Label> */}
           <Form.Control
             type="number"
             placeholder="Enter category ID"
@@ -137,7 +137,7 @@ function AddMTrack() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicDuration">
-          <Form.Label>Duration (Optional)</Form.Label>
+          {/* <Form.Label>Duration (Optional)</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter duration (e.g., 4:20)"
