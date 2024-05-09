@@ -14,7 +14,9 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Hidden from "@mui/material/Hidden";
 import LoginIcon from "@mui/icons-material/Login";
-import { Avatar, Box, Menu, MenuItem, Tooltip } from "@mui/material";
+import { Box, Menu, MenuItem, Tooltip } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+
 import CategoryIcon from "@mui/icons-material/Category";
 import Person4Icon from "@mui/icons-material/Person4";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -22,7 +24,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { styled } from "@mui/system";
-
 
 const CustomTypography = styled(Typography)({
   fontFamily: "VampireWars",
@@ -32,7 +33,6 @@ const CustomTypography = styled(Typography)({
 });
 
 function Sidebar() {
-
   const pages = [
     { name: "Home", path: "/", icon: <LibraryMusicIcon /> },
     {
@@ -41,7 +41,11 @@ function Sidebar() {
       icon: <CategoryIcon />,
     },
     { name: "Artists", path: "/home/artists", icon: <Person4Icon /> },
-    { name: "Player", path: "/player-controller/player", icon: <LibraryMusicIcon /> },
+    {
+      name: "Player",
+      path: "/player-controller/player",
+      icon: <LibraryMusicIcon />,
+    },
     { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
     { name: "About", path: "/about", icon: <InfoIcon /> },
   ];
@@ -116,9 +120,7 @@ function Sidebar() {
           <Box p={2} bgcolor="#4b0082" textAlign="center">
             {" "}
             {/* Darker purple background color */}
-            <CustomTypography>
-              SpaceTune
-            </CustomTypography>
+            <CustomTypography>SpaceTune</CustomTypography>
           </Box>
           <List>
             {pages.map((page) => (
@@ -167,10 +169,7 @@ function Sidebar() {
                     }}
                   >
                     <IconButton sx={{ p: 0 }}>
-                      <Avatar
-                        alt={session.user?.email?.toString()}
-                        src={`${session!.user!.image}`}
-                      />
+                      <Avatar src={session!.user!.image?.toString()} />
                     </IconButton>
                     <Typography
                       variant="h6"
@@ -252,9 +251,7 @@ function Sidebar() {
           <Box py={2} bgcolor="#4b0082">
             {" "}
             {/* Darker purple background color */}
-            <CustomTypography align="center">
-              SpaceTune
-            </CustomTypography>
+            <CustomTypography align="center">SpaceTune</CustomTypography>
             <Divider />
           </Box>
           <List>
@@ -306,7 +303,7 @@ function Sidebar() {
                     <IconButton sx={{ p: 0 }}>
                       <Avatar
                         alt={session.user?.email?.toString()}
-                        src={`${session!.user!.image}`}
+                        src={session.user?.image?.toString()}
                       />
                     </IconButton>
                     <Typography
