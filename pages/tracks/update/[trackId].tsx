@@ -74,7 +74,7 @@ function UpdateTrack() {
       }}
     >
       <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
+        <Form.Label style={{color: "white"}}>Name</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter name"
@@ -86,7 +86,7 @@ function UpdateTrack() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicImageUrl">
-        <Form.Label>Track Image URL</Form.Label>
+        <Form.Label style={{color: "white"}}>Track Image URL</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter image URL"
@@ -98,7 +98,7 @@ function UpdateTrack() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicArtistName">
-        <Form.Label>Artist Name</Form.Label>
+        <Form.Label style={{color: "white"}}>Artist Name</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter artist name"
@@ -110,7 +110,7 @@ function UpdateTrack() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicArtistImageUrl">
-        <Form.Label>Artist Image URL</Form.Label>
+        <Form.Label style={{color: "white"}}>Artist Image URL</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter artist image URL"
@@ -122,7 +122,7 @@ function UpdateTrack() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicCategoryId">
-        <Form.Label>Category ID (Optional)</Form.Label>
+        <Form.Label style={{color: "white"}}>Category ID (Optional)</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter category ID"
@@ -133,7 +133,7 @@ function UpdateTrack() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicDuration">
-        <Form.Label>Duration (Optional)</Form.Label>
+        <Form.Label style={{color: "white"}}>Duration (Optional)</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter duration (e.g., 4:20)"
@@ -146,7 +146,7 @@ function UpdateTrack() {
       <Button
         variant="contained"
         type="submit"
-        style={{ width: "100%", marginTop: 2, backgroundColor: "salmon" }}
+        style={{ width: "50%", marginTop: 2, backgroundColor: "salmon", margin: "auto" }}
       >
         UPDATE
       </Button>
