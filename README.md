@@ -45,7 +45,6 @@
 - user_id,
 - songs [ids]
 
-## Team:
 
 -- Navbar(Home, Search, Them, Profile, )
 
@@ -55,7 +54,7 @@
 - Search Page (Filtration), Track card
 - Playlists Page, Playlist Card, Playlist Page, Albums Page, Album Card, Album Page
 - Home, Audio Player, share to social media
-- Profile, Rrgister, Login, [A.Rahman]
+- Profile, Rrgister, Login
 
 ---
 
@@ -68,11 +67,9 @@
 - Search Results Page (Categories, Songs, Albums, Artists) Containing Searched Word (Can have Filteration)
 - Category Page (Songs inside this category -Track Cards-)
 - Album Page (Songs inside this album -Track Cards-)
-- Playlists Page (Playlist Cards) -Including (Liked Tracks) which is created for each user-
-- Playlist Page (Songs Added to this playlist)
 - Artist Page (Albums and Songs related to him/her)
 - Profile Page (User Info that can be updated, Also Contains Theme Settings & Dark Mode Toggle)
-- Audio Player (Works Continuously in all pages)
+- Audio Player (Works Continuously in all pages with lyrics)
 - Playlist Cards & Albums Cards (Have Title, CoverImage, NoOfTracks, Share to social media)
 - Catgeory Cards (Have Title, CoverImage, NoOfTracks)
 - Track Cards (Have Title, CoverImage, Duration, Like Button, Add to playlist Button, Share to social media)
@@ -81,7 +78,3 @@
 
 ---
 
-- NavBar (Routing, Pages Creation), Playlist (Page & Cards) [Jimmy]
-- Profile, Rrgister, Login, [A.Rahman]
-- Cards (Track, Category, Album, Artist) [Amgad] [ghabour]
-- HomePage [El-Gamal]
