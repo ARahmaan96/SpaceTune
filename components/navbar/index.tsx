@@ -140,20 +140,21 @@ function Sidebar() {
           </List>
           <Divider />
           <List>
-            {adminPages.map((page) => (
-              <Link key={page.name} href={page.path} passHref>
-                <ListItem button onClick={handlePageClick}>
-                  <ListItemIcon sx={{ color: "orange" }}>
-                    {page.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <Typography color="lightblue">{page.name}</Typography>
-                    }
-                  />
-                </ListItem>
-              </Link>
-            ))}
+            {session &&
+              adminPages.map((page) => (
+                <Link key={page.name} href={page.path} passHref>
+                  <ListItem button onClick={handlePageClick}>
+                    <ListItemIcon sx={{ color: "orange" }}>
+                      {page.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={
+                        <Typography color="lightblue">{page.name}</Typography>
+                      }
+                    />
+                  </ListItem>
+                </Link>
+              ))}
           </List>
           <Divider />
           <List>
@@ -272,20 +273,21 @@ function Sidebar() {
           </List>
           <Divider />
           <List>
-            {adminPages.map((page) => (
-              <Link key={page.name} href={page.path} passHref>
-                <ListItem button onClick={handlePageClick}>
-                  <ListItemIcon sx={{ color: "orange" }}>
-                    {page.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <Typography color="lightblue">{page.name}</Typography>
-                    }
-                  />
-                </ListItem>
-              </Link>
-            ))}
+            {session &&
+              adminPages.map((page) => (
+                <Link key={page.name} href={page.path} passHref>
+                  <ListItem button onClick={handlePageClick}>
+                    <ListItemIcon sx={{ color: "orange" }}>
+                      {page.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={
+                        <Typography color="lightblue">{page.name}</Typography>
+                      }
+                    />
+                  </ListItem>
+                </Link>
+              ))}
           </List>
           <Divider />
           <List>
