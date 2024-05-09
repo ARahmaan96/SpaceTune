@@ -24,33 +24,24 @@ const MusicBar = () => {
   const [totalTime, setTotalTime] = useState("0:00");
   const [musicName, setMusicName] = useState("Unknown Music");
 
-  const handleVolumeChange = (
-    event: any,
-    newValue: React.SetStateAction<number>
-  ) => {
-    setVolume(newValue);
-    if (newValue === 0) {
-      setMuted(true);
-    } else {
-      setMuted(false);
-    }
-  };
+  const handleVolumeChange = (event: any,) => {
+    const value = event.target.value;
+    if (value === 0) setMuted(true);
+    else if (value >= 0 && muted) setMuted(false);
+    setVolume(value);
+  }
 
   const handleMuteToggle = () => {
     setMuted(!muted);
-    if (!muted) {
-      setVolume(0);
-    } else {
-      setVolume(50);
-    }
+    !muted ? setVolume(0) : setVolume(50);
   };
 
   const handlePreviousSong = () => {
-    // Logic for playing the previous song
+    // Logic for skipping 5 seconds back
   };
 
   const handleNextSong = () => {
-    // Logic for playing the next song
+    // Logic for skipping 5 seconds forward
   };
 
   const handleFastRewind = () => {
@@ -63,8 +54,8 @@ const MusicBar = () => {
 
   return (
     <AppBar
-      position="fixed"
-      style={{ top: "auto", bottom: 0, backgroundColor: "#2e1c6d" }}
+      className="position-fixed bottom-0"
+      style={{ top: "auto", backgroundColor: "#2e1c6d" }}
     >
       <Toolbar
         className="theme"
@@ -74,69 +65,72 @@ const MusicBar = () => {
           alignItems: "center",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <IconButton style={{ color: "#ffffff" }} onClick={handlePreviousSong}>
+        <div className="d-md-flex align-items-center justify-content-between">
+          <div className="d-flex align-items-center justify-content-center">
+            <Typography
+              variant="body2"
+              style={{
+                color: "#ffffff",
+              }}
+            >
+              {/* dsfds */}
+              {musicName}
+            </Typography>
+
+            <Typography className="px-3 fst-italic" variant="body2">
+              {currentTime} / {totalTime}
+            </Typography>
+          </div>
+
+          <div className="d-flex align-items-center justify-content-between">
+            <div>
+            <IconButton style={{ color: "#ffffff" }} onClick={handlePreviousSong}>
             <SkipPreviousIcon />
           </IconButton>
-          <IconButton style={{ color: "#ffffff" }} onClick={handleFastRewind}>
-            <FastRewindIcon />
-          </IconButton>
-          <IconButton style={{ color: "#ffffff" }}>
-            {true ? <PlayArrowIcon /> : <PauseIcon />}
-          </IconButton>
-          <IconButton style={{ color: "#ffffff" }} onClick={handleFastForward}>
-            <FastForwardIcon />
-          </IconButton>
-          <IconButton style={{ color: "#ffffff" }} onClick={handleNextSong}>
+              <IconButton style={{ color: "#ffffff" }} onClick={handleFastRewind}>
+                <FastRewindIcon />
+              </IconButton>
+              <IconButton style={{ color: "#ffffff" }}>
+                {true ? <PlayArrowIcon /> : <PauseIcon />}
+              </IconButton>
+              <IconButton style={{ color: "#ffffff" }} onClick={handleFastForward}>
+                <FastForwardIcon />
+              </IconButton>
+              <IconButton style={{ color: "#ffffff" }} onClick={handleNextSong}>
             <SkipNextIcon />
           </IconButton>
-          <Typography
-            variant="body2"
-            style={{
-              color: "#ffffff",
-              marginLeft: "16px",
-              marginRight: "40px",
-            }}
-          >
-            {musicName}
-          </Typography>
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Typography
-            variant="body2"
-            style={{ color: "#ffffff", marginRight: "16px" }}
-          >
-            {currentTime} / {totalTime}
-          </Typography>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Tooltip title={muted ? "Unmute" : "Mute"}>
-              <IconButton
-                style={{ color: "#ffffff" }}
-                onClick={handleMuteToggle}
-              >
-                {muted ? (
-                  <VolumeOffIcon />
-                ) : volume > 50 ? (
-                  <VolumeUpIcon />
-                ) : (
-                  <VolumeDownIcon />
-                )}
-              </IconButton>
-            </Tooltip>
-            <Slider
-              value={volume}
-              // onChange={handleVolumeChange}
-              aria-labelledby="continuous-slider"
-              orientation="horizontal"
-              min={0}
-              max={100}
-              style={{
-                marginLeft: "8px",
-                width: "100px",
-                visibility: muted ? "hidden" : "visible",
-              }}
-            />
+            </div>
+            <div className="d-flex align-items-center justify-content-start">
+              <Tooltip title={muted ? "Unmute" : "Mute"}>
+                <IconButton
+                  style={{ color: "#ffffff" }}
+                  onClick={handleMuteToggle}
+                >
+                  {muted ? (
+                    <VolumeOffIcon />
+                  ) : volume > 50 ? (
+                    <VolumeUpIcon />
+                  ) : (
+                    <VolumeDownIcon />
+                  )}
+                </IconButton>
+              </Tooltip>
+              <Slider
+                min={0}
+                max={100}
+                value={volume}
+                aria-label="Volume"
+                orientation="horizontal"
+                onChange={handleVolumeChange}
+                aria-labelledby="continuous-slider"
+                style={{
+                  width: "100px",
+                  // visibility: muted ? "hidden" : "visible",
+                }}
+              />
+            </div>
           </div>
+
         </div>
       </Toolbar>
     </AppBar>

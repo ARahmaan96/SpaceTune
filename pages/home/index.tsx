@@ -15,9 +15,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import SearchBar from "@/components/search";
 import NoResults from "@/components/NoResults";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const HomePage: React.FC = () => {
-  //const artists = Array.from({ length: 20 }, (_, i) => i + 1);
 
   const categoriesRef = useRef<HTMLDivElement>(null);
   const artistsRef = useRef<HTMLDivElement>(null);
@@ -158,68 +162,98 @@ const HomePage: React.FC = () => {
       </Typography>
 
       {/* Categories section */}
-      <div
-        ref={categoriesRef}
-        style={{
-          display: "flex",
-          gap: "25px",
+      <div style={{
+          gap: "16px",
           marginBottom: "24px",
           overflowX: "hidden",
-        }}
-        onMouseDown={handleCategoriesMouseDown}
-      >
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            style={{
-              width: "300px",
-              margin: "20px 40px 20px 0px",
-              pointerEvents: isDraggingCategories ? "none" : "auto",
-            }}
-          >
-            <Link href={`/home/categories/${category.id}`}>
-              {/* Routing Problem */}
-              <CategoryCard
-                name={category.name}
-                image={category.image}
-                id={category.id}
-              />{" "}
-            </Link>
-          </div>
-        ))}
+        }}>
+        <Swiper
+          
+          effect={'coverflow'}
+          // grabCursor={true}
+          centeredSlides={false}
+          loop={true}
+          slidesPerView={1} // Default to 1 for small screens
+          breakpoints={{
+            // When the width is >= 576px, display 2 slides per view
+            0: {
+              slidesPerView: 1.15,
+            },
+            // When the width is >= 992px, display 3 slides per view
+            992: {
+              slidesPerView: 3.2,
+            },
+          }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            modifier: 2.5,
+          }}
+          pagination={{ clickable: true }}
+          navigation={false}
+        >
+          {categories.map((category) => (
+            <SwiperSlide key={category.id}>
+              <Link href={`/home/categories/${category.id}`}>
+                <CategoryCard name={category.name} image={category.image} id={category.id} />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
       </div>
 
       {/* Artists section */}
       <div
-        ref={artistsRef}
         style={{
-          display: "flex",
           gap: "16px",
           marginBottom: "24px",
           overflowX: "hidden",
         }}
-        onMouseDown={handleArtistsMouseDown}
       >
-        {artists.map((artist) => (
-          <div
-            key={artist.id}
-            style={{ pointerEvents: isDraggingArtists ? "none" : "auto" }}
-          >
-            {/* Routing Problem */}
-            <Link href={`/home/artists/${artist.id}`}>
+        <Swiper
+          
+          effect={'coverflow'}
+          // grabCursor={true}
+          centeredSlides={false}
+          loop={true}
+          slidesPerView={1} // Default to 1 for small screens
+          breakpoints={{
+            // When the width is >= 576px, display 2 slides per view
+            0: {
+              slidesPerView: 2,
+            },
+            // When the width is >= 992px, display 3 slides per view
+            992: {
+              slidesPerView: 5,
+            },
+          }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            modifier: 2.5,
+          }}
+          pagination={{ clickable: true }}
+          navigation={false}
+        >
+          {artists.map((artist) => (
+            <SwiperSlide key={artist.id}>
+              <Link href={`/home/artists/${artist.id}`}>
               <ArtistCard
-                id={artist.id}
-                artist_name={artist.artist_name}
-                nationality={artist.nationality}
-                language={artist.language}
-                image_url={artist.image_url}
-                age={artist.age}
-                no_of_albums={artist.no_of_albums}
-                no_of_songs={artist.no_of_songs}
-              />
-            </Link>
-          </div>
-        ))}
+              id={artist.id}
+              artist_name={artist.artist_name}
+              nationality={artist.nationality}
+              language={artist.language}
+              image_url={artist.image_url}
+              age={artist.age}
+              no_of_albums={artist.no_of_albums}
+              no_of_songs={artist.no_of_songs}
+            />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        
       </div>
         
       {/* Search section */}

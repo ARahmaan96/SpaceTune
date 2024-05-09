@@ -26,7 +26,7 @@ import { styled } from "@mui/system";
 
 const CustomTypography = styled(Typography)({
   fontFamily: "VampireWars",
-  fontSize: "27px",
+  fontSize: "25px",
   color: "lightblue",
   textShadow: "2px 2px 0px rgba(0, 0, 0, 0.9)",
 });
@@ -41,7 +41,7 @@ function Sidebar() {
       icon: <CategoryIcon />,
     },
     { name: "Artists", path: "/home/artists", icon: <Person4Icon /> },
-    { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
+    { name: "Player", path: "/player-controller/player", icon: <LibraryMusicIcon /> },
     { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
     { name: "About", path: "/about", icon: <InfoIcon /> },
   ];
