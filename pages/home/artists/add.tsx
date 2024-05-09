@@ -81,7 +81,7 @@ function AddArtist() {
         }}
       >
         <Form.Group className="mb-3" controlId="formBasicArtistName">
-          <Form.Label>Artist Name</Form.Label>
+          {/* <Form.Label>Artist Name</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter artist name"
@@ -93,7 +93,7 @@ function AddArtist() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicNationality">
-          <Form.Label>Nationality</Form.Label>
+          {/* <Form.Label>Nationality</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter nationality"
@@ -105,7 +105,7 @@ function AddArtist() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicLanguage">
-          <Form.Label>Language</Form.Label>
+          {/* <Form.Label>Language</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter language"
@@ -117,7 +117,7 @@ function AddArtist() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicImageUrl">
-          <Form.Label>Artist Image URL</Form.Label>
+          {/* <Form.Label>Artist Image URL</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter artist image URL"
@@ -129,7 +129,7 @@ function AddArtist() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAge">
-          <Form.Label>Age</Form.Label>
+          {/* <Form.Label>Age</Form.Label> */}
           <Form.Control
             type="number"
             placeholder="Enter age"
@@ -141,7 +141,7 @@ function AddArtist() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicNoOfAlbums">
-          <Form.Label>Number of Albums</Form.Label>
+          {/* <Form.Label>Number of Albums</Form.Label> */}
           <Form.Control
             type="number"
             placeholder="Enter number of albums"
@@ -153,7 +153,7 @@ function AddArtist() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicNoOfSongs">
-          <Form.Label>Number of Songs</Form.Label>
+          {/* <Form.Label>Number of Songs</Form.Label> */}
           <Form.Control
             type="number"
             placeholder="Enter number of songs"
