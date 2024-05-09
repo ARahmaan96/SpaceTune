@@ -9,7 +9,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", marginTop: "60px", marginRight: "10%", marginLeft: "10%s" }}>
+    <div style={{ display: "flex", justifyContent: "center", marginTop: "60px", marginBottom: "120px",marginRight: "10%", marginLeft: "10%s" }}>
       <div style={{ border: "2px solid #1976D2", padding: "20px", maxWidth: "600px", color: "#FFFFFF", textAlign: "center" }}>
         <Typography style={{color: "cyan"}} variant="h3" component="h1">
           Contact Us

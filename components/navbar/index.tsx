@@ -21,8 +21,18 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { styled } from "@mui/system";
+
+
+const CustomTypography = styled(Typography)({
+  fontFamily: "VampireWars",
+  fontSize: "25px",
+  color: "lightblue",
+  textShadow: "2px 2px 0px rgba(0, 0, 0, 0.9)",
+});
 
 function Sidebar() {
+
   const pages = [
     { name: "Home", path: "/", icon: <LibraryMusicIcon /> },
     {
@@ -31,7 +41,7 @@ function Sidebar() {
       icon: <CategoryIcon />,
     },
     { name: "Artists", path: "/home/artists", icon: <Person4Icon /> },
-    { name: "Player", path: "/song/1", icon: <LibraryMusicIcon /> },
+    { name: "Player", path: "/player-controller/player", icon: <LibraryMusicIcon /> },
     { name: "Contact Us", path: "/contact", icon: <ContactSupportIcon /> },
     { name: "About", path: "/about", icon: <InfoIcon /> },
   ];
@@ -106,9 +116,9 @@ function Sidebar() {
           <Box p={2} bgcolor="#4b0082" textAlign="center">
             {" "}
             {/* Darker purple background color */}
-            <Typography variant="h6" color="white">
+            <CustomTypography>
               SpaceTune
-            </Typography>
+            </CustomTypography>
           </Box>
           <List>
             {pages.map((page) => (
@@ -242,9 +252,9 @@ function Sidebar() {
           <Box py={2} bgcolor="#4b0082">
             {" "}
             {/* Darker purple background color */}
-            <Typography variant="h6" color="white" align="center">
+            <CustomTypography align="center">
               SpaceTune
-            </Typography>
+            </CustomTypography>
             <Divider sx={{ mt: 2, mb: 2 }} />
           </Box>
           <List>

@@ -150,7 +150,7 @@ function AddMTrack() {
         <Button
           variant="contained"
           type="submit"
-          style={{ width: "100%", marginTop: 2, backgroundColor: "salmon" }}
+          style={{ width: "50%", marginTop: 2, backgroundColor: "salmon", margin: "auto" }}
         >
           ADD
         </Button>

@@ -46,5 +46,13 @@
     "password": "123",
     "image": "/uplodes/1715202775093-260230103-image1.png",
     "type": "user"
+  },
+  {
+    "id": "3bcb9a41-e0d2-474e-b18c-26c3e80d4526",
+    "name": "Ahmed Elgamal",
+    "email": "ahmed@gmail.com",
+    "password": "123456",
+    "image": "/uplodes/1715203708272-457868943-—Pngtree—learning online courses at home_5418281.png",
+    "type": "user"
   }
 ]
